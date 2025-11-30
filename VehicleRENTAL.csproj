@@ -48,9 +48,14 @@
   <ItemGroup>
     <Compile Include="Classes\Admin.cs" />
     <Compile Include="Classes\Customer.cs" />
+    <Compile Include="Classes\Hatchback.cs" />
     <Compile Include="Classes\License.cs" />
+    <Compile Include="Classes\Pickup.cs" />
     <Compile Include="Classes\RentalAgent.cs" />
+    <Compile Include="Classes\Sedan.cs" />
+    <Compile Include="Classes\SUV.cs" />
     <Compile Include="Classes\Users.cs" />
+    <Compile Include="Classes\Vehicle.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
