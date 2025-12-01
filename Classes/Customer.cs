@@ -5,11 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace VehicleRENTAL.Classes
-{
-    public class Rental
-    {
-        
-    }
+
     public class Customer
     {
         public int customerId;
