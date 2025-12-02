@@ -16,15 +16,15 @@ namespace VehicleRENTAL.Classes
     }
     public abstract class Vehicle
     {
-        public int vehicleId;
-        public string model;
-        public string Color;
-        public DateTime year;
-        public string licensePlate;
-        public string fuelType;
-        public Status vehiclestatus;
-        public List<byte[]> Photo;
-        public decimal fuelCapacity;
+        public int vehicleId { get; set; }
+        public string model { get; set; }
+        public string Color { get; set; }
+        public DateTime year { get; set; }
+        public string licensePlate { get; set; }
+        public string fuelType { get; set; }
+        public Status vehiclestatus { get; set; }
+        public List<byte[]> Photo { get; set; }
+        public decimal fuelCapacity { get; set; }
 
         public abstract decimal CalculateRate();
 

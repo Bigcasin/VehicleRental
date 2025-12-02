@@ -8,5 +8,6 @@ namespace VehicleRENTAL.Classes
 {
     public class RateConfiguration
     {
+
     }
 }
