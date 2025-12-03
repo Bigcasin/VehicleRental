@@ -14,7 +14,7 @@ namespace VehicleRENTAL.Classes
         Admin,
         RentalAgent
     }
-    public abstract class Users
+    public abstract class User
     {
         public string Firstname { get; set; }
         public string Lastname { get; set; }

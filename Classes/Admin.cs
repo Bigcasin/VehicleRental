@@ -12,7 +12,7 @@ namespace VehicleRENTAL.Classes
         Medium,
         High
     }
-    public class Admin : Users
+    public class Admin : User
     {
         public int adminId;
         private AdminLevel adminlvl;

@@ -47,15 +47,30 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\Admin.cs" />
+    <Compile Include="Classes\BilingManager.cs" />
     <Compile Include="Classes\Customer.cs" />
+    <Compile Include="Classes\CustomerManager.cs" />
+    <Compile Include="Classes\Damage.cs" />
+    <Compile Include="Classes\DamageReport.cs" />
     <Compile Include="Classes\Hatchback.cs" />
+    <Compile Include="Classes\Invoice.cs" />
     <Compile Include="Classes\License.cs" />
+    <Compile Include="Classes\MaintenanceManager.cs" />
+    <Compile Include="Classes\MaintenanceRecord.cs" />
+    <Compile Include="Classes\Payment.cs" />
     <Compile Include="Classes\Pickup.cs" />
+    <Compile Include="Classes\RateConfiguration.cs" />
+    <Compile Include="Classes\Rental.cs" />
     <Compile Include="Classes\RentalAgent.cs" />
+    <Compile Include="Classes\ReportManager.cs" />
+    <Compile Include="Classes\Reservation.cs" />
+    <Compile Include="Classes\ReservationManager.cs" />
     <Compile Include="Classes\Sedan.cs" />
     <Compile Include="Classes\SUV.cs" />
-    <Compile Include="Classes\Users.cs" />
+    <Compile Include="Classes\User.cs" />
     <Compile Include="Classes\Vehicle.cs" />
+    <Compile Include="Classes\VehicleInspection.cs" />
+    <Compile Include="Classes\VehicleManager.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
