@@ -21,5 +21,20 @@ namespace VehicleRENTAL
         {
 
         }
+
+        private void label1_Click(object sender, EventArgs e) {
+
+        }
+
+        private void timer1_Tick(object sender, EventArgs e) {
+            panel3.Width += 3;
+        
+        if (panel3.Width >= 881) {
+                timer1.Stop();
+                Login login = new Login();
+                login.Show();
+                this.Hide();
+        }
+        }
     }
 }
