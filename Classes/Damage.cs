@@ -7,12 +7,7 @@ using System.Threading.Tasks;
 
 namespace VehicleRENTAL.Classes
 {
-    public enum DamageSeverity 
-    {
-        Critical,
-        Moderate,
-        Light
-    }
+  
     public class Damage
     {
         public int DamageId { get; set; }

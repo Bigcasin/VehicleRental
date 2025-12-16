@@ -52,6 +52,7 @@
     <Compile Include="Classes\CustomerManager.cs" />
     <Compile Include="Classes\Damage.cs" />
     <Compile Include="Classes\DamageReport.cs" />
+    <Compile Include="Classes\Enums.cs" />
     <Compile Include="Classes\Hatchback.cs" />
     <Compile Include="Classes\Invoice.cs" />
     <Compile Include="Classes\License.cs" />

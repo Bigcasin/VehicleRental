@@ -6,14 +6,7 @@ using System.Threading.Tasks;
 
 namespace VehicleRENTAL.Classes
 {
-    public enum ReservationStatus
-    {
-        Pending,        
-        Confirmed,      
-        PickedUp,       
-        Returned,       
-        Cancelled       
-    }
+
     public class Reservation
     {
         public int ReservationID { get; set; }

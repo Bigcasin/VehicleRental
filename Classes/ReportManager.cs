@@ -8,11 +8,7 @@ using System.Threading.Tasks;
 
 namespace VehicleRENTAL.Classes
 {
-    public enum Report
-    {
-        Fleet,
-        Rental
-    }
+   
     public class ReportManager
     {
         public Report GenerateFleetReport { get; set; }

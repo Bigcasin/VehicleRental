@@ -6,13 +6,7 @@ using System.Threading.Tasks;
 
 namespace VehicleRENTAL.Classes
 {
-    public enum PaymentMethod
-    {
-        Cash,
-        Card,
-        Online,
-        BankTransfer
-    }
+  
     public class Payment
     {
         public int PaymentId { get; set; }
