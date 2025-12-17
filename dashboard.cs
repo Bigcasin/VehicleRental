@@ -2,12 +2,13 @@
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
 namespace VehicleRENTAL {
     public partial class dashboard : Form {
+        private Random rng = new Random();
+        private DataTable recentTable;
 
         // P/Invoke for cue banner (placeholder) on .NET Framework
         [DllImport("user32.dll", CharSet = CharSet.Unicode)]
@@ -15,7 +16,7 @@ namespace VehicleRENTAL {
         private const uint EM_SETCUEBANNER = 0x1501;
 
         public dashboard() {
-        InitializeComponent();
+            InitializeComponent();
         }
 
         private void dashboard_Load(object sender, EventArgs e) {
@@ -31,7 +32,7 @@ namespace VehicleRENTAL {
                 SetCueBanner(txtSearch, "Search vehicles, customers, bookings...");
             } catch {
                 // if it fails (very old OS), ignore
-        }
+            }
         }
 
         private void SetCueBanner(TextBox tb, string cue) {
@@ -74,7 +75,7 @@ namespace VehicleRENTAL {
             recentTable.Columns.Add("From", typeof(DateTime));
             recentTable.Columns.Add("To", typeof(DateTime));
             dgvRecent.DataSource = recentTable;
-     }
+        }
 
         private void LoadSampleData() {
             // sample KPI values — replace with real data binding
@@ -105,7 +106,7 @@ namespace VehicleRENTAL {
                     DateTime.Today.AddDays(rng.Next(-5, 3)),
                     DateTime.Today.AddDays(rng.Next(4, 12))
                 );
-        }
+            }
         }
 
         // Simple search/filter implementation across recentTable
@@ -118,7 +119,7 @@ namespace VehicleRENTAL {
                 var dv = recentTable.DefaultView;
                 dv.RowFilter = $"ReservationID LIKE '%{filter}%' OR Customer LIKE '%{filter}%' OR Vehicle LIKE '%{filter}%'";
                 dgvRecent.DataSource = dv;
-        }
+            }
         }
 
         // Navigation button handlers — show different pages in the main area.
