@@ -7,13 +7,8 @@ using System.Threading.Tasks;
 
 namespace VehicleRENTAL.Classes
 {
-    public enum Status
-    {
-        Available,
-        Rented,
-        UnderMaintenance,
-        OutOfService
-    }
+    
+    
     public abstract class Vehicle
     {
         public int vehicleId { get; set; }

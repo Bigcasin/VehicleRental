@@ -9,11 +9,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace VehicleRENTAL.Classes
 {
-    public enum UserRole
-    {
-        Admin,
-        RentalAgent
-    }
+   
     public abstract class User
     {
         public string Firstname { get; set; }

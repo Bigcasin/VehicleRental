@@ -6,21 +6,7 @@ using System.Threading.Tasks;
 
 namespace VehicleRENTAL.Classes
 {
-    public enum VehicleStatus
-    {
-        Available,
-        Rented,
-        UnderMaintenance,
-        OutOfService
-    }
-    public enum SearchFilter
-    {
-        ByBrand,
-        ByModel,
-        ByYear,
-        ByStatus,
-        ByPriceRange
-    }
+
     public class VehicleManager
     {
         public void AddVehicle(Vehicle vehicle) 
