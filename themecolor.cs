@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace VehicleRENTAL {
     public static class themecolor {
-       public List<string> ColorList = new List<string>() { "#3F51B5",
+            // make list readonly and static to avoid accidental modification and static-class issues
                                                                     "#009688",
                                                                     "#FF5722",
                                                                     "#607D8B",
@@ -33,7 +33,9 @@ namespace VehicleRENTAL {
                                                                     "#E4126B",
                                                                     "#43B76E",
                                                                     "#7BCFE9",
-                                                                    "#B71C46"};
+            "#B71C46"
+        };
+
         public static Color ChangeColorBrightness(Color color, double correctionFactor) {
         double red = color.R;
         double green = color.G;
@@ -55,8 +57,6 @@ namespace VehicleRENTAL {
 
         return Color.FromArgb(color.A, (byte)red, (byte)green, (byte)blue);
         }
-
     }
 }
     
-
