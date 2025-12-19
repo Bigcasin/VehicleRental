@@ -6,12 +6,7 @@ using System.Threading.Tasks;
 
 namespace VehicleRENTAL.Classes
 {
-    public enum AdminLevel
-    {
-        Low,
-        Medium,
-        High
-    }
+   
     public class Admin : User
     {
         public int adminId;

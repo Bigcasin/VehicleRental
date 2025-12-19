@@ -6,14 +6,7 @@ using System.Threading.Tasks;
 
 namespace VehicleRENTAL.Classes
 {
-    public enum RentalStatus
-    {
-        Pending,        
-        Active,         
-        Completed,      
-        Cancelled,      
-        Overdue         
-    }
+   
     public class Rental
     {
         public int RentalId { get; set; }

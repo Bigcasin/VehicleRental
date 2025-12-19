@@ -6,13 +6,7 @@ using System.Threading.Tasks;
 
 namespace VehicleRENTAL.Classes
 {
-    public enum Category
-    {
-        Hatchback,
-        Sedan,
-        SUV,
-        Pickup,
-    }
+
     public class RateConfiguration
     {
         public int RateId { get; set; }
