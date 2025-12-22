@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using VehicleRENTAL.Classes;
 
 namespace VehicleRENTAL {
     public partial class dashboard : Form {
@@ -19,7 +20,8 @@ namespace VehicleRENTAL {
             InitializeComponent();
         }
 
-        private void dashboard_Load(object sender, EventArgs e) {
+        private void dashboard_Load(object sender, EventArgs e)
+        {
             // initialize UI
             lblTitle.Text = "HOME";
             InitializeKpis();
@@ -28,14 +30,26 @@ namespace VehicleRENTAL {
             LoadSampleData();
 
             // set a cue banner for search textbox (works on .NET Framework)
-            try {
+            try
+            {
                 SetCueBanner(txtSearch, "Search vehicles, customers, bookings...");
-            } catch {
+            }
+            catch
+            {
                 // if it fails (very old OS), ignore
             }
+
+            //display table
+            RefreshVehicleTable();
         }
 
-        private void SetCueBanner(TextBox tb, string cue) {
+		private void RefreshVehicleTable()
+		{
+			dgvVehicles.AutoGenerateColumns = false;
+			dgvVehicles.DataSource = VehicleManager.Instance.Vehicles;
+		}
+
+		private void SetCueBanner(TextBox tb, string cue) {
             if (tb == null || tb.IsDisposed) return;
             try {
                 // Force handle creation safely and send the cue banner message
@@ -152,5 +166,25 @@ namespace VehicleRENTAL {
             LoadSampleData();
             // TODO: open user management
         }
+
+        private void btnVehicleAdd_Click(object sender, EventArgs e)
+        {
+			AddVehicleForm form = new AddVehicleForm();
+
+			if (form.ShowDialog() == DialogResult.OK)
+			{
+				dgvVehicles.DataSource = null;
+				dgvVehicles.DataSource = VehicleManager.Instance.Vehicles;
+			}
+		}
+
+        private void dgvVehicles_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+     
+
+
     }
 }

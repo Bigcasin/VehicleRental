@@ -69,5 +69,10 @@ namespace VehicleRENTAL
                 this.Hide();
             }
         }
+
+        private void panelMain_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

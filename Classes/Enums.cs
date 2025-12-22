@@ -36,13 +36,6 @@ namespace VehicleRENTAL.Classes
 		BankTransfer
 	}
 
-	public enum Category
-	{
-		Hatchback,
-		Sedan,
-		SUV,
-		Pickup,
-	}
 
 	public enum RentalStatus
 	{
@@ -74,19 +67,38 @@ namespace VehicleRENTAL.Classes
 		RentalAgent
 	}
 
+	public enum VehicleCategory
+	{
+		Hatchback,
+		Sedan,
+		SUV,
+		Pickup,
+		Van
+	}
+
+	public enum FuelType
+	{
+		Gasoline,
+		Diesel,
+		Electric,
+		Hybrid
+	}
+
+	public enum TransmissionType
+	{
+		Manual,
+		Automatic
+	}
+
 	public enum VehicleStatus
 	{
 		Available,
+		Reserved,
 		Rented,
 		UnderMaintenance,
-		OutOfService
+		OutOfService,
+		Retired
 	}
-	public enum SearchFilter
-	{
-		ByBrand,
-		ByModel,
-		ByYear,
-		ByStatus,
-		ByPriceRange
-	}
+
+
 }
