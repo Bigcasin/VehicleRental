@@ -148,11 +148,11 @@
     <Compile Include="dashboard.Designer.cs">
       <DependentUpon>dashboard.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form1.cs">
+    <Compile Include="loadingscreen.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="loadingscreen.Designer.cs">
+      <DependentUpon>loadingscreen.cs</DependentUpon>
     </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
@@ -160,18 +160,24 @@
     <Compile Include="Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
+    <Compile Include="obj\Debug\.NETFramework,Version=v4.7.2.AssemblyAttributes.cs" />
+    <Compile Include="obj\Release\.NETFramework,Version=v4.7.2.AssemblyAttributes.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="themecolor.cs" />
     <EmbeddedResource Include="dashboard.resx">
       <DependentUpon>dashboard.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="loadingscreen.resx">
+      <DependentUpon>loadingscreen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="obj\Debug\VehicleRENTAL.dashboard.resources" />
+    <EmbeddedResource Include="obj\Debug\VehicleRENTAL.Form1.resources" />
+    <EmbeddedResource Include="obj\Debug\VehicleRENTAL.Login.resources" />
+    <EmbeddedResource Include="obj\Debug\VehicleRENTAL.Properties.Resources.resources" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -182,7 +188,39 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+<<<<<<< HEAD
     <None Include="packages.config" />
+=======
+    <None Include=".vs\slnx.sqlite" />
+    <None Include=".vs\VehicleRENTAL.csproj.dtbcache.json" />
+    <None Include=".vs\VehicleRENTAL\copilot-chat\87563d79\sessions\8ddecf3c-eb60-4876-a4a5-cc82b888d585" />
+    <None Include=".vs\VehicleRENTAL\copilot-chat\87563d79\sessions\c8998cd4-74fb-4118-985c-777ff8cecbe5" />
+    <None Include=".vs\VehicleRENTAL\CopilotIndices\17.14.1368.60722\CodeChunks.db" />
+    <None Include=".vs\VehicleRENTAL\CopilotIndices\17.14.1368.60722\SemanticSymbols.db" />
+    <None Include=".vs\VehicleRENTAL\CopilotIndices\17.14.1431.25910\CodeChunks.db" />
+    <None Include=".vs\VehicleRENTAL\CopilotIndices\17.14.1431.25910\CodeChunks.db-shm" />
+    <None Include=".vs\VehicleRENTAL\CopilotIndices\17.14.1431.25910\CodeChunks.db-wal" />
+    <None Include=".vs\VehicleRENTAL\CopilotIndices\17.14.1431.25910\SemanticSymbols.db" />
+    <None Include=".vs\VehicleRENTAL\CopilotIndices\17.14.1431.25910\SemanticSymbols.db-shm" />
+    <None Include=".vs\VehicleRENTAL\CopilotIndices\17.14.1431.25910\SemanticSymbols.db-wal" />
+    <None Include=".vs\VehicleRENTAL\FileContentIndex\3140f6d7-58de-4572-90a7-2982cf4daf87.vsidx" />
+    <None Include=".vs\VehicleRENTAL\FileContentIndex\5e06ce9f-16c7-4af3-8fa7-df0a3c3876b8.vsidx" />
+    <None Include=".vs\VehicleRENTAL\FileContentIndex\7142da5e-fa1d-4be1-ab99-1c022f528ee5.vsidx" />
+    <None Include=".vs\VehicleRENTAL\FileContentIndex\a6e5ceca-81f6-47e1-9f07-bcbfafb1a60a.vsidx" />
+    <None Include=".vs\VehicleRENTAL\FileContentIndex\e0f3ce83-1f31-485b-940c-80f0bc623665.vsidx" />
+    <None Include=".vs\VehicleRENTAL\v17\DocumentLayout.backup.json" />
+    <None Include=".vs\VehicleRENTAL\v17\DocumentLayout.json" />
+    <None Include=".vs\VehicleRENTAL\v17\ResourceExplorer\settings.json" />
+    <None Include=".vs\VSWorkspaceState.json" />
+    <None Include="bin\Debug\VehicleRENTAL.exe.config" />
+    <None Include="obj\Debug\DesignTimeResolveAssemblyReferences.cache" />
+    <None Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="obj\Debug\VehicleRENTAL.csproj.AssemblyReference.cache" />
+    <None Include="obj\Debug\VehicleRENTAL.csproj.CoreCompileInputs.cache" />
+    <None Include="obj\Debug\VehicleRENTAL.csproj.GenerateResource.cache" />
+    <None Include="obj\Debug\VehicleRENTAL.exe.config" />
+    <None Include="obj\Release\VehicleRENTAL.csproj.AssemblyReference.cache" />
+>>>>>>> b57b8c12cba669de1adf63cce2f0036155be25c1
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -201,6 +239,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIzLTAyL3Zwcm9qZWN0b2xkMS1uaW5nLTU0NC1qb2IxNzM4XzEucG5n-removebg-preview.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\Debug\VehicleRENTAL.exe" />
+    <Content Include="bin\Debug\VehicleRENTAL.pdb" />
+    <Content Include="obj\Debug\TempPE\Properties.Resources.Designer.cs.dll" />
+    <Content Include="obj\Debug\VehicleRENTAL.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Debug\VehicleRENTAL.exe" />
+    <Content Include="obj\Debug\VehicleRENTAL.pdb" />
+    <Content Include="Sql\SqlVehicle.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="bin\Release\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
