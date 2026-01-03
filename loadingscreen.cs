@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using VehicleRENTAL.Classes;
 
 namespace VehicleRENTAL
 {
@@ -68,6 +69,24 @@ namespace VehicleRENTAL
                 login.Show();
                 this.Hide();
             }
+        }
+        private void loadingScreen_Load(object sender, EventArgs e)
+        {
+            if (!Database.TestConnection())
+            {
+                MessageBox.Show(
+                    "Database connection failed",
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                );
+                Application.Exit();
+            }
+        }
+
+        private void panelMain_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

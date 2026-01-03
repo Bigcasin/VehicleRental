@@ -37,7 +37,7 @@
             // 
             // panelMain
             // 
-            this.panelMain.BackColor = System.Drawing.SystemColors.ActiveCaption; // keep original color
+            this.panelMain.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.panelMain.Controls.Add(this.lblPercent);
             this.panelMain.Controls.Add(this.lblSubtitle);
             this.panelMain.Controls.Add(this.lblTitle);
@@ -48,6 +48,7 @@
             this.panelMain.Padding = new System.Windows.Forms.Padding(24);
             this.panelMain.Size = new System.Drawing.Size(700, 340);
             this.panelMain.TabIndex = 0;
+            this.panelMain.Paint += new System.Windows.Forms.PaintEventHandler(this.panelMain_Paint);
             // 
             // lblPercent
             // 
@@ -110,13 +111,13 @@
             this.timer1.Interval = 20;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // Form1
+            // loadingscreen
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(700, 340);
             this.Controls.Add(this.panelMain);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "Form1";
+            this.Name = "loadingscreen";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Loading";
             this.Load += new System.EventHandler(this.Form1_Load);
