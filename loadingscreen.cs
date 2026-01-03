@@ -12,11 +12,15 @@ namespace VehicleRENTAL
         public loadingscreen()
         {
             InitializeComponent();
+            this.Load += loadingscreen_Load;
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void loadingscreen_Load(object sender, EventArgs e)
         {
             // start with empty progress
+            MessageBox.Show("Loading screen started");
+
+
             _percent = 0;
             UpdateProgressVisual();
             timer1.Start();

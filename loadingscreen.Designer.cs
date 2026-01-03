@@ -120,7 +120,7 @@
             this.Name = "loadingscreen";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Loading";
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.Load += new System.EventHandler(this.loadingscreen_Load);
             this.panelMain.ResumeLayout(false);
             this.pnlBarBackground.ResumeLayout(false);
             this.ResumeLayout(false);

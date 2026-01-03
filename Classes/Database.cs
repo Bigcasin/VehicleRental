@@ -13,7 +13,7 @@ namespace VehicleRENTAL.Classes
         public static MySqlConnection GetConnection()
         {
             return new MySqlConnection(
-                ConfigurationManager.ConnectionStrings["RentalDB"].ConnectionString
+                ConfigurationManager.ConnectionStrings["rental"].ConnectionString
             );
         }
         public static bool TestConnection()
