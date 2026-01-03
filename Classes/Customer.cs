@@ -4,27 +4,36 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace VehicleRENTAL.Classes {
+namespace VehicleRENTAL.Classes
+{
+	public class Customer
+	{
+		public int Id { get; set; }
 
-    public class Customer
-    {
-        public int customerId { get; set; }
-        public string firstname { get; set; }
-        public string lastname { get; set; }
-        public int age { get; set; }
-        public string gender { get; set; }
-        public DateTime birthDate { get; set; }
-        public int PhoneNum { get; set; }
-        public string Nationality { get; set; }
-        private bool BlackList { get; set; }
-        private string loyaltypoints { get; set; }
-        public List<Rental> RentalHistory() 
-        { 
-            return new List<Rental>();
-        }
-        public bool AvailabilityForRental() 
-        { 
-            return !BlackList;
-        }
-    }
+		public string Firstname { get; set; }
+		public string Lastname { get; set; }
+
+		public string Name => $"{Firstname} {Lastname}";
+
+		public int Age { get; set; }
+		public string Gender { get; set; }
+		public DateTime BirthDate { get; set; }
+
+		public string Phone { get; set; }
+		public string Nationality { get; set; }
+
+		public bool IsBlacklisted { get; set; }
+
+		public string Loyaltypoints { get; set; }
+
+		public License License { get; set; }
+
+		public List<Rental> RentalHistory { get; set; } = new List<Rental>();
+
+		public bool AvailabilityForRental()
+		{
+			return !IsBlacklisted;
+		}
+	}
 }
+
