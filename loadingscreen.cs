@@ -4,11 +4,11 @@ using System.Windows.Forms;
 
 namespace VehicleRENTAL
 {
-    public partial class Form1 : Form
+    public partial class loadingscreen : Form
     {
         private int _percent = 0;
 
-        public Form1()
+        public loadingscreen()
         {
             InitializeComponent();
         }
