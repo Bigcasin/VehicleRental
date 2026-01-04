@@ -56,9 +56,10 @@ namespace VehicleRENTAL.Classes
 	{
 		Pending,
 		Confirmed,
-		PickedUp,
+		PickedUp,  //ang vehicles kay unavailable kung pending,confirmed, or pickedup
+
 		Returned,
-		Cancelled
+		Cancelled //ignored if returned or cancelled
 	}
 
 	public enum UserRole
@@ -93,12 +94,21 @@ namespace VehicleRENTAL.Classes
 	public enum VehicleStatus
 	{
 		Available,
+		Unavailable,
 		Reserved,
 		Rented,
 		UnderMaintenance,
 		OutOfService,
 		Retired
 	}
+
+	public enum PaymentStatus
+	{
+		Unpaid,
+		Paid
+	}
+
+
 
 
 }

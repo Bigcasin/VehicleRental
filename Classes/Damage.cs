@@ -14,5 +14,6 @@ namespace VehicleRENTAL.Classes
         public string Description { get; set; }
         public DamageSeverity Severity { get; set; }
         public Image Photo { get; set; }
+
     }
 }
