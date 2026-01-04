@@ -137,8 +137,9 @@
   <ItemGroup>
     <None Include="Resources\cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIzLTAyL3Zwcm9qZWN0b2xkMS1uaW5nLTU0NC1qb2IxNzM4XzEucG5n-removebg-preview.png" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Sql\" />
+    <Content Include="Sql\SQLRental.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
