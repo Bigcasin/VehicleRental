@@ -102,14 +102,12 @@ namespace VehicleRENTAL {
         p.Padding = new Padding(12);
         foreach (Control c in p.Controls) {
         if (c is Label lab) {
-        // small heuristic: titles lower-case length
         if (lab.Font.Size <= 9.5f) {
         lab.ForeColor = mutedText; // title
         lab.Font = new Font("Segoe UI", 9F, FontStyle.Regular);
         } else {
         lab.ForeColor = accent; // big value
         lab.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
-        }
         }
         }
         }
