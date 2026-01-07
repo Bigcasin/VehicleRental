@@ -1,20 +1,23 @@
 ﻿using System;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using VehicleRENTAL.Classes;
 
 namespace VehicleRENTAL {
     public partial class loadingscreen : Form {
         private int _percent = 0;
 
-        public loadingscreen() {
-        InitializeComponent();
+        public loadingscreen()
+        {
+            InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e) {
-        // start with empty progress
-        _percent = 0;
-        UpdateProgressVisual();
-        timer1.Start();
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            // start with empty progress
+            _percent = 0;
+            UpdateProgressVisual();
+            timer1.Start();
         }
 
         private void UpdateProgressVisual() {
@@ -51,11 +54,11 @@ namespace VehicleRENTAL {
         await Task.Delay(20);
         }
 
-        // show login and close/hide the loader
-        var login = new Login();
-        login.Show();
-        this.Hide();
-        }
+                // show login and close/hide the loader
+                var login = new Login();
+                login.Show();
+                this.Hide();
+            }
         }
     }
 }
