@@ -59,12 +59,6 @@ namespace VehicleRENTAL {
             RefreshVehicleTable();
         }
 
-		private void RefreshVehicleTable()
-		{
-			dgvVehicles.AutoGenerateColumns = false;
-			dgvVehicles.DataSource = VehicleManager.Instance.Vehicles;
-		}
-
 		private void SetCueBanner(TextBox tb, string cue) {
             if (tb == null || tb.IsDisposed) return;
             try {
@@ -136,7 +130,6 @@ namespace VehicleRENTAL {
                         }
                     }
                 }
-            }
 
             // Metrics panel
             pnlMetrics.BackColor = card;
@@ -177,156 +170,6 @@ namespace VehicleRENTAL {
             lblKpi3Value.Text = "$0";
             lblKpi4Value.Text = "0";
         }
-
-        // Minimal, safe "chart" placeholder — avoids requiring System.Windows.Forms.DataVisualization
-        private void InitializeChartPlaceholder() {
-            pnlMetrics.Controls.Clear();
-            var lbl = new Label {
-                Text = "Metrics (placeholder)",
-                Dock = DockStyle.Fill,
-                TextAlign = ContentAlignment.MiddleCenter,
-                Font = new Font("Segoe UI", 10F, FontStyle.Regular),
-                ForeColor = Color.DimGray
-            };
-            pnlMetrics.Controls.Add(lbl);
-        }
-
-        private void InitializeRecentGrid() {
-            recentTable = new DataTable();
-            recentTable.Columns.Add("ReservationID", typeof(string));
-            recentTable.Columns.Add("Customer", typeof(string));
-            recentTable.Columns.Add("Vehicle", typeof(string));
-            recentTable.Columns.Add("From", typeof(DateTime));
-            recentTable.Columns.Add("To", typeof(DateTime));
-            dgvRecent.DataSource = recentTable;
-        }
-
-        private void LoadSampleData() {
-            // sample KPI values — replace with real data binding
-            lblKpi1Value.Text = rng.Next(5, 50).ToString();
-            lblKpi2Value.Text = rng.Next(40, 95).ToString() + "%";
-            lblKpi3Value.Text = "$" + rng.Next(2000, 20000).ToString("N0");
-            lblKpi4Value.Text = rng.Next(0, 10).ToString();
-
-            // update metric placeholder text with simple monthly numbers
-            var monthly = Enumerable.Range(0, 12).Select(i => rng.Next(30, 95)).ToArray();
-            var txt = "Utilization (last 12 months): " + string.Join(", ", monthly.Select(x => x + "%"));
-            pnlMetrics.Controls.Clear();
-            var lbl = new Label {
-                Text = txt,
-                Dock = DockStyle.Fill,
-                TextAlign = ContentAlignment.MiddleCenter,
-                Font = new Font("Segoe UI", 9F, FontStyle.Regular),
-                ForeColor = Color.FromArgb(35, 98, 170)
-            };
-            pnlMetrics.Controls.Add(lbl);
-
-            recentTable.Rows.Clear();
-            for (int i = 0; i < 8; i++) {
-                recentTable.Rows.Add(
-                    $"R-{rng.Next(1000, 9999)}",
-                    $"Customer {rng.Next(1, 200)}",
-                    $"Vehicle {rng.Next(100, 999)}",
-                    DateTime.Today.AddDays(rng.Next(-5, 3)),
-                    DateTime.Today.AddDays(rng.Next(4, 12))
-                );
-            }
-        }
-
-        // Simple search/filter implementation across recentTable
-        private void txtSearch_TextChanged(object sender, EventArgs e) {
-            if (recentTable == null)
-                return;
-            var filter = txtSearch.Text.Trim().Replace("'", "''");
-            if (string.IsNullOrEmpty(filter)) {
-                dgvRecent.DataSource = recentTable;
-            } else {
-                var dv = recentTable.DefaultView;
-                dv.RowFilter = $"ReservationID LIKE '%{filter}%' OR Customer LIKE '%{filter}%' OR Vehicle LIKE '%{filter}%'";
-                dgvRecent.DataSource = dv;
-            }
-        }
-
-        // Small helper to show a module placeholder inside the metrics panel area.
-        private void ShowModulePlaceholder(string title, string message) {
-            lblTitle.Text = title;
-            pnlMetrics.Controls.Clear();
-
-            var panel = new Panel { Dock = DockStyle.Fill, BackColor = pnlMetrics.BackColor };
-            var lbl = new Label {
-                Text = message,
-                Dock = DockStyle.Top,
-                Height = 44,
-                TextAlign = ContentAlignment.MiddleLeft,
-                Font = new Font("Segoe UI", 10F, FontStyle.Regular),
-                Padding = new Padding(8),
-                ForeColor = Color.White
-            };
-            panel.Controls.Add(lbl);
-
-            var btn = new Button {
-                Text = "Open module (placeholder)",
-                Dock = DockStyle.Top,
-                Height = 34,
-                Margin = new Padding(8),
-                BackColor = ColorTranslator.FromHtml("#164F4A"),
-                ForeColor = Color.White,
-                FlatStyle = FlatStyle.Flat
-            };
-            btn.FlatAppearance.BorderSize = 0;
-            // short guidance click
-            btn.Click += (s, e) => MessageBox.Show($"{title} module placeholder.\r\nImplement a UserControl and load into pnlMetrics via pnlMetrics.Controls.Add(control).", title, MessageBoxButtons.OK, MessageBoxIcon.Information);
-            panel.Controls.Add(btn);
-
-            pnlMetrics.Controls.Add(panel);
-        }
-
-        // Navigation button handlers — show different pages in the main area.
-        private void btnCar_Click(object sender, EventArgs e) {
-            ShowModulePlaceholder("FLEET", "Fleet Management: implement list, filters, image upload (right panel).");
-        }
-
-        private void btnCustomer_Click(object sender, EventArgs e) {
-            ShowModulePlaceholder("CUSTOMERS", "Customer Profile Management: view and edit customer details, upload documents.");
-        }
-
-        private void btnRental_Click(object sender, EventArgs e) {
-            ShowModulePlaceholder("RENTALS", "Reservation & Rental: reservation wizard, pickup, and payment processing.");
-        }
-
-        private void btnReturn_Click(object sender, EventArgs e) {
-            ShowModulePlaceholder("RETURNS", "Return & Damage Assessment: inspect damage, record fees and finalize return.");
-        }
-
-        private void btnDrivers_Click(object sender, EventArgs e) {
-            ShowModulePlaceholder("DRIVERS", "Driver Management: register drivers, assign to vehicles and manage driver documents.");
-        }
-
-        private void btnLicences_Click(object sender, EventArgs e) {
-            ShowModulePlaceholder("LICENSES", "Licences: record and validate driver licences, expiry and verification.");
-        }
-
-        private void btnUsers_Click(object sender, EventArgs e) {
-            ShowModulePlaceholder("USERS", "User Management: create/edit users, roles and permissions.");
-        }
-
-        private void btnDashboard_Click(object sender, EventArgs e) {
-            // restore home/dashboard
-            lblTitle.Text = "HOME";
-            InitializeKpis();
-            InitializeChartPlaceholder();
-            InitializeRecentGrid();
-            LoadSampleData();
-        }
-
-        private void btnLogout_Click(object sender, EventArgs e) {
-            // Show login and close this dashboard
-            var login = new Login();
-            login.StartPosition = FormStartPosition.CenterScreen;
-            login.Show();
-            this.Close();
-        }
-
         // Add this method to your dashboard class
         private void btnDriversLicences_Click(object sender, EventArgs e)
         {
@@ -365,7 +208,6 @@ namespace VehicleRENTAL {
                 foreach (var ctrl in found) {
                     ctrl.Dock = DockStyle.Top;
                     panelMenu.Controls.Add(ctrl);
-                    // Ensure it's positioned at the top-most z-order as we add
                     panelMenu.Controls.SetChildIndex(ctrl, 0);
                 }
 
@@ -373,8 +215,6 @@ namespace VehicleRENTAL {
                 if (logout != null) {
                     logout.Dock = DockStyle.Bottom;
                     panelMenu.Controls.Add(logout);
-                    // put logout at the end (bottom)
-                    panelMenu.Controls.SetChildIndex(logout, panelMenu.Controls.Count - 1);
                 }
             } finally {
                 panelMenu.ResumeLayout();
@@ -384,25 +224,5 @@ namespace VehicleRENTAL {
         private void panelLogo_Paint(object sender, PaintEventArgs e) {
 
         }
-
-        private void btnVehicleAdd_Click(object sender, EventArgs e)
-        {
-			AddVehicleForm form = new AddVehicleForm();
-
-			if (form.ShowDialog() == DialogResult.OK)
-			{
-				dgvVehicles.DataSource = null;
-				dgvVehicles.DataSource = VehicleManager.Instance.Vehicles;
-			}
-		}
-
-        private void dgvVehicles_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-     
-
-
     }
 }

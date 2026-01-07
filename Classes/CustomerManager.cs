@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 namespace VehicleRENTAL.Classes
 {
-
     public class CustomerManager
     {
 		private List<Customer> customers = new List<Customer>();
