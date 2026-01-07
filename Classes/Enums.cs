@@ -25,12 +25,6 @@
         BankTransfer
     }
 
-    public enum Category {
-        Hatchback,
-        Sedan,
-        SUV,
-        Pickup,
-    }
 
     public enum RentalStatus {
         Pending,
@@ -45,30 +39,62 @@
         Rental
     }
 
-    public enum ReservationStatus {
-        Pending,
-        Confirmed,
-        PickedUp,
-        Returned,
-        Cancelled
-    }
+	public enum ReservationStatus
+	{
+		Pending,
+		Confirmed,
+		PickedUp,  //ang vehicles kay unavailable kung pending,confirmed, or pickedup
+
+		Returned,
+		Cancelled //ignored if returned or cancelled
+	}
 
     public enum UserRole {
         Admin,
         RentalAgent
     }
 
-    public enum VehicleStatus {
-        Available,
-        Rented,
-        UnderMaintenance,
-        OutOfService
-    }
-    public enum SearchFilter {
-        ByBrand,
-        ByModel,
-        ByYear,
-        ByStatus,
-        ByPriceRange
-    }
+	public enum VehicleCategory
+	{
+		Hatchback,
+		Sedan,
+		SUV,
+		Pickup,
+		Van
+	}
+
+	public enum FuelType
+	{
+		Gasoline,
+		Diesel,
+		Electric,
+		Hybrid
+	}
+
+	public enum TransmissionType
+	{
+		Manual,
+		Automatic
+	}
+
+	public enum VehicleStatus
+	{
+		Available,
+		Unavailable,
+		Reserved,
+		Rented,
+		UnderMaintenance,
+		OutOfService,
+		Retired
+	}
+
+	public enum PaymentStatus
+	{
+		Unpaid,
+		Paid
+	}
+
+
+
+
 }

@@ -1,19 +1,28 @@
 ﻿using System.Collections.Generic;
 
-namespace VehicleRENTAL.Classes {
+namespace VehicleRENTAL.Classes
+{
+	public class VehicleManager
+	{
+		private static VehicleManager _instance;
 
-    public class VehicleManager {
-        public void AddVehicle(Vehicle vehicle) {
+		public static VehicleManager Instance
+		{
+			get
+			{
+				if (_instance == null)
+					_instance = new VehicleManager();
+				return _instance;
+			}
+		}
 
-        }
-        public void EditVehicle(Vehicle vehicle) {
+		public List<Vehicle> Vehicles { get; } = new List<Vehicle>();
 
-        }
-        public void UpdateStatus(int vehicleid, VehicleStatus status) {
+		public void AddVehicle(Vehicle vehicle)
+		{
+			Vehicles.Add(vehicle);
+		}
+	}
 
-        }
-        public List<Vehicle> Search(SearchFilter criteria) {
-        return new List<Vehicle>();
-        }
-    }
+
 }

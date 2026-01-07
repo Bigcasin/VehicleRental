@@ -1,28 +1,46 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace VehicleRENTAL.Classes {
+namespace VehicleRENTAL.Classes
+{
 
 
-    public abstract class Vehicle {
-        public int vehicleId { get; set; }
-        public string model { get; set; }
-        public string Color { get; set; }
-        public DateTime year { get; set; }
-        public string licensePlate { get; set; }
-        public string fuelType { get; set; }
-        public Status vehiclestatus { get; set; }
-        public List<byte[]> Photo { get; set; }
-        public decimal fuelCapacity { get; set; }
+	public class Vehicle
+	{
+		public int VehicleId { get; set; }
+		public string Make { get; set; }
+		public string Model { get; set; }
+		public int Year { get; set; }
+		public string Color { get; set; }
+		public string LicensePlate { get; set; }
+		public string VIN { get; set; }
 
-        public abstract decimal CalculateRate();
+		public VehicleCategory Category { get; set; }
+		public TransmissionType Transmission { get; set; }
+		public FuelType FuelType { get; set; }
 
-        public string CarStatus() {
-        return vehiclestatus.ToString();
-        }
+		public int SeatingCapacity { get; set; }
+		public double Mileage { get; set; }
 
-        public bool Availability() {
-        return vehiclestatus == Status.Available;
-        }
-    }
+		public VehicleStatus Status { get; set; }
+
+		public bool HasAirConditioning { get; set; }
+		public bool HasGPS { get; set; }
+		public bool HasBluetooth { get; set; }
+		public bool HasChildSeat { get; set; }
+		public bool HasInsuranceCoverage { get; set; }
+		public double CargoCapacity { get; set; }
+		public double FuelEfficiency { get; set; } 
+
+		public void UpdateMileage(double newMileage)
+		{
+			Mileage = newMileage;
+		}
+
+		public void ChangeStatus(VehicleStatus newStatus)
+		{
+			Status = newStatus;
+		}
+	}
+
 }

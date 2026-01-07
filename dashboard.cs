@@ -4,8 +4,7 @@ using System.Drawing;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
-using MaterialSkin;
-using MaterialSkin.Controls;
+using VehicleRENTAL.Classes;
 
 namespace VehicleRENTAL {
     public partial class dashboard : MaterialForm {
@@ -30,7 +29,8 @@ namespace VehicleRENTAL {
             );
         }
 
-        private void dashboard_Load(object sender, EventArgs e) {
+        private void dashboard_Load(object sender, EventArgs e)
+        {
             // initialize UI
             lblTitle.Text = "HOME";
             InitializeKpis();
@@ -46,18 +46,27 @@ namespace VehicleRENTAL {
             }
 
             // set a cue banner for search textbox (works on .NET Framework)
-            try {
+            try
+            {
                 SetCueBanner(txtSearch, "Search vehicles, customers, bookings...");
-            } catch {
-                // if it fails (very old OS), igntre
+            }
+            catch
+            {
+                // if it fails (very old OS), ignore
             }
 
-            EnsureMenuOrder();
+            //display table
+            RefreshVehicleTable();
         }
 
-        private void SetCueBanner(TextBox tb, string cue) {
-            if (tb == null || tb.IsDisposed)
-                return;
+		private void RefreshVehicleTable()
+		{
+			dgvVehicles.AutoGenerateColumns = false;
+			dgvVehicles.DataSource = VehicleManager.Instance.Vehicles;
+		}
+
+		private void SetCueBanner(TextBox tb, string cue) {
+            if (tb == null || tb.IsDisposed) return;
             try {
                 // Force handle creation safely and send the cue banner message
                 var handle = tb.Handle;
@@ -375,5 +384,25 @@ namespace VehicleRENTAL {
         private void panelLogo_Paint(object sender, PaintEventArgs e) {
 
         }
+
+        private void btnVehicleAdd_Click(object sender, EventArgs e)
+        {
+			AddVehicleForm form = new AddVehicleForm();
+
+			if (form.ShowDialog() == DialogResult.OK)
+			{
+				dgvVehicles.DataSource = null;
+				dgvVehicles.DataSource = VehicleManager.Instance.Vehicles;
+			}
+		}
+
+        private void dgvVehicles_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+     
+
+
     }
 }

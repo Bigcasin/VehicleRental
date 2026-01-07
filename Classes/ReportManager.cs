@@ -1,24 +1,51 @@
 ﻿using System.Data;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using VehicleRENTAL.Classes;
 
-namespace VehicleRENTAL.Classes {
+public class ReportManager
+{
+	// Generate fleet report
+	public Report GenerateFleetReport()
+	{
+		Report report = new Report();
+		// later: fill report with vehicle data
+		return report;
+	}
 
-    public class ReportManager {
-        public Report GenerateFleetReport { get; set; }
-        public Report GenerateRentalReport { get; set; }
-        public void ExportPDF(Report report, string path) {
+	// Generate rental report
+	public Report GenerateRentalReport()
+	{
+		Report report = new Report();
+		// later: fill report with rental data
+		return report;
+	}
 
-        }
-        public void ExportCSV(Report report, string path) {
+	public void ExportPDF(Report report, string path)
+	{
+		// future implementation
+	}
 
-        }
-        public void ExportExcel(Report report, string path) {
+	public void ExportCSV(Report report, string path)
+	{
+		// future implementation
+	}
 
-        }
-        public void PrintReport(Report report) {
+	public void ExportExcel(Report report, string path)
+	{
+		// future implementation
+	}
 
-        }
-        public DataSet CompileData() {
-        return new DataSet();
-        }
-    }
+	public void PrintReport(Report report)
+	{
+		// future implementation
+	}
+
+	public DataSet CompileData()
+	{
+		return new DataSet();
+	}
 }
+

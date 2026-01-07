@@ -1,29 +1,52 @@
 ﻿using System;
 
-namespace VehicleRENTAL.Classes {
+namespace VehicleRENTAL.Classes
+{
+	public abstract class User
+	{
+		
+		public string Firstname { get; set; }
+		public string Lastname { get; set; }
+		public string Gender { get; set; }
+		public int PhoneNum { get; set; }
+		public int Age { get; set; }
+		public DateTime BirthDate { get; set; }
+		public string Nationality { get; set; }
 
-    public abstract class User {
-        public string Firstname { get; set; }
-        public string Lastname { get; set; }
-        public string Gender { get; set; }
-        public int PhoneNum { get; set; }
-        public int Age { get; set; }
-        public DateTime BirthDate { get; set; }
-        public UserRole Role { get; set; }
-        public string Nationality { get; set; }
-        private string Username { get; set; }
-        private string Password { get; set; }
+	
+		public UserRole Role { get; protected set; }
 
-        public bool Login(string username, string password) {
-        return Username == username && Password == password;
-        }
-        public void Logout() {
+		
+		protected string Username { get; set; }
+		protected string Password { get; set; }
 
-        }
-        public string UpdateProfile() {
-        return Username;
-        }
-    }
+		
+		protected User(string username, string password)
+		{
+			Username = username;
+			Password = password;
+		}
+
+	
+		public bool Login(string username, string password)
+		{
+			return Username == username && Password == password;
+		}
+
+	
+		public void Logout()
+		{
+			
+		}
+
+	
+		public void UpdateProfile(string firstname, string lastname, int phoneNum)
+		{
+			Firstname = firstname;
+			Lastname = lastname;
+			PhoneNum = phoneNum;
+		}
+	}
 }
 
 
