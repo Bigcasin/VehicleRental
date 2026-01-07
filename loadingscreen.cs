@@ -77,10 +77,5 @@ namespace VehicleRENTAL {
         private void panelMain_Paint(object sender, PaintEventArgs e) {
             // intentionally left blank (designer hook)
         }
-
-        private void panelMain_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
     }
 }

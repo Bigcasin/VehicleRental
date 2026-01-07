@@ -53,7 +53,6 @@ namespace VehicleRENTAL.Classes
 
 			reservation.Status = ReservationStatus.Confirmed;
 			reservation.Vehicle.ChangeStatus(VehicleStatus.Reserved);
-
 		}
 
 		public void PickUpVehicle(Reservation reservation)
@@ -74,7 +73,6 @@ namespace VehicleRENTAL.Classes
 			reservation.Vehicle.ChangeStatus(VehicleStatus.Available);
 		}
 
-
 		public void CancelReservation(Reservation reservation)
 		{
 			if (reservation == null)
@@ -83,7 +81,6 @@ namespace VehicleRENTAL.Classes
 			reservation.Status = ReservationStatus.Cancelled;
 			reservation.Vehicle.ChangeStatus(VehicleStatus.Available);
 		}
-
 
 		public List<Reservation> GetAllReservations()
 		{

@@ -26,14 +26,6 @@
         private void InitializeComponent() {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelMenu = new System.Windows.Forms.Panel();
-            this.btnLogout = new System.Windows.Forms.Button();
-            this.btnUsers = new System.Windows.Forms.Button();
-            this.btnDriversLicences = new System.Windows.Forms.Button();
-            this.btnReturn = new System.Windows.Forms.Button();
-            this.btnRental = new System.Windows.Forms.Button();
-            this.btnCustomer = new System.Windows.Forms.Button();
-            this.btnCar = new System.Windows.Forms.Button();
-            this.btnDashboard = new System.Windows.Forms.Button();
             this.panelLogo = new System.Windows.Forms.Panel();
             this.lblBrand = new System.Windows.Forms.Label();
             this.panelHeader = new System.Windows.Forms.Panel();
@@ -174,8 +166,6 @@
             this.btnRental.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnRental.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnRental.FlatAppearance.BorderSize = 0;
-            this.btnRental.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(45)))), ((int)(((byte)(60)))));
-            this.btnRental.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(55)))), ((int)(((byte)(72)))));
             this.btnRental.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRental.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.btnRental.ForeColor = System.Drawing.Color.WhiteSmoke;
