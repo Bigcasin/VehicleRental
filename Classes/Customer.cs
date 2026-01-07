@@ -1,13 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace VehicleRENTAL.Classes {
 
-    public class Customer
-    {
+    public class Customer {
         public int customerId { get; set; }
         public string firstname { get; set; }
         public string lastname { get; set; }
@@ -18,13 +14,11 @@ namespace VehicleRENTAL.Classes {
         public string Nationality { get; set; }
         private bool BlackList { get; set; }
         private string loyaltypoints { get; set; }
-        public List<Rental> RentalHistory() 
-        { 
-            return new List<Rental>();
+        public List<Rental> RentalHistory() {
+        return new List<Rental>();
         }
-        public bool AvailabilityForRental() 
-        { 
-            return !BlackList;
+        public bool AvailabilityForRental() {
+        return !BlackList;
         }
     }
 }

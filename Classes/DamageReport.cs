@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
-namespace VehicleRENTAL.Classes
-{
-    public class DamageReport
-    {
+namespace VehicleRENTAL.Classes {
+    public class DamageReport {
         public int ReportId { get; set; }
         public Rental Rental { get; set; }
         public List<Damage> Damages { get; set; }

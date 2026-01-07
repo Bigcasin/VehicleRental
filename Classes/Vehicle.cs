@@ -1,16 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace VehicleRENTAL.Classes
-{
-    
-    
-    public abstract class Vehicle
-    {
+namespace VehicleRENTAL.Classes {
+
+
+    public abstract class Vehicle {
         public int vehicleId { get; set; }
         public string model { get; set; }
         public string Color { get; set; }
@@ -23,14 +17,12 @@ namespace VehicleRENTAL.Classes
 
         public abstract decimal CalculateRate();
 
-        public string CarStatus() 
-        {
-            return vehiclestatus.ToString();
+        public string CarStatus() {
+        return vehiclestatus.ToString();
         }
 
-        public bool Availability() 
-        {
-            return vehiclestatus == Status.Available;
+        public bool Availability() {
+        return vehiclestatus == Status.Available;
         }
     }
 }

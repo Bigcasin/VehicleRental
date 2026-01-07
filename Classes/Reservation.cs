@@ -1,14 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace VehicleRENTAL.Classes
-{
+namespace VehicleRENTAL.Classes {
 
-    public class Reservation
-    {
+    public class Reservation {
         public int ReservationID { get; set; }
         public Customer Customer { get; set; }
         public DateTime PickupDate { get; set; }

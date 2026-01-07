@@ -1,17 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Remoting.Messaging;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
-namespace VehicleRENTAL.Classes
-{
-   
-    public abstract class User
-    {
+namespace VehicleRENTAL.Classes {
+
+    public abstract class User {
         public string Firstname { get; set; }
         public string Lastname { get; set; }
         public string Gender { get; set; }
@@ -23,17 +14,14 @@ namespace VehicleRENTAL.Classes
         private string Username { get; set; }
         private string Password { get; set; }
 
-        public bool Login(string username, string password)
-        {
-            return Username == username && Password == password;
+        public bool Login(string username, string password) {
+        return Username == username && Password == password;
         }
-        public void Logout() 
-        { 
+        public void Logout() {
 
         }
-        public string UpdateProfile() 
-        { 
-            return Username;
+        public string UpdateProfile() {
+        return Username;
         }
     }
 }
