@@ -1,6 +1,14 @@
-﻿namespace VehicleRENTAL.Classes {
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-    public class RateConfiguration {
+namespace VehicleRENTAL.Classes
+{
+
+    public class RateConfiguration
+    {
         public int RateId { get; set; }
 
         public VehicleCategory Category { get; set; }

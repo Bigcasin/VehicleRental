@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace VehicleRENTAL.Classes
 {
+
     public class CustomerManager
     {
 		private List<Customer> customers = new List<Customer>();
@@ -35,8 +36,9 @@ namespace VehicleRENTAL.Classes
         { 
             return true;
         }
-        public bool ValidateCustomerData(Customer customer) {
-        return true;
+        public bool ValidateCustomerData(Customer customer) 
+        {
+            return true;
         }
     }
 }
