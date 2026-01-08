@@ -7,7 +7,7 @@ using System.Windows.Forms;
 using VehicleRENTAL.Classes;
 
 namespace VehicleRENTAL {
-    public partial class dashboard : MaterialForm {
+    public partial class dashboard : Form {
         private Random rng = new Random();
         private DataTable recentTable;
 
@@ -18,15 +18,6 @@ namespace VehicleRENTAL {
 
         public dashboard() {
             InitializeComponent();
-
-            // Apply MaterialSkin theme + color scheme
-            var materialSkinManager = MaterialSkinManager.Instance;
-            materialSkinManager.AddFormToManage(this);
-            materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
-            materialSkinManager.ColorScheme = new ColorScheme(
-                Primary.BlueGrey800, Primary.BlueGrey900,
-                Primary.BlueGrey500, Accent.Teal200, TextShade.WHITE
-            );
         }
 
         private void dashboard_Load(object sender, EventArgs e)
@@ -37,13 +28,6 @@ namespace VehicleRENTAL {
             InitializeChartPlaceholder();
             InitializeRecentGrid();
             LoadSampleData();
-
-            // theme and styling
-            try {
-                ApplyDarkTheme();
-            } catch {
-                // non-fatal
-            }
 
             // set a cue banner for search textbox (works on .NET Framework)
             try
@@ -59,6 +43,12 @@ namespace VehicleRENTAL {
             RefreshVehicleTable();
         }
 
+		private void RefreshVehicleTable()
+		{
+			dgvVehicles.AutoGenerateColumns = false;
+			dgvVehicles.DataSource = VehicleManager.Instance.Vehicles;
+		}
+
 		private void SetCueBanner(TextBox tb, string cue) {
             if (tb == null || tb.IsDisposed) return;
             try {
@@ -70,99 +60,6 @@ namespace VehicleRENTAL {
             }
         }
 
-        private void ApplyDarkTheme() {
-            // Align dashboard colors with Login and LoadingScreen designs
-            var sidebar = System.Drawing.Color.LightSteelBlue;          // matches Login panel1
-            var header = SystemColors.ActiveCaption;                   // matches LoadingScreen panelMain
-            var surface = Color.White;                                 // content area like Login panel2
-            var card = Color.WhiteSmoke;                               // subtle card background
-            var accent = Color.FromArgb(100, 210, 145);                // loading progress accent
-            var lightText = Color.FromArgb(40, 40, 40);                // dark text on light surfaces
-            var mutedText = Color.DimGray;
-
-            // Form background
-            this.BackColor = surface;
-
-            // Sidebar
-            panelMenu.BackColor = sidebar;
-            foreach (Control c in panelMenu.Controls) {
-                if (c is Button b) {
-                    b.FlatStyle = FlatStyle.Flat;
-                    b.FlatAppearance.BorderSize = 0;
-                    b.ForeColor = Color.White;            // white text on colored sidebar (like Login)
-                    b.BackColor = sidebar;
-                    b.TextAlign = ContentAlignment.MiddleLeft;
-                    b.Padding = new Padding(18, 0, 0, 0);
-                    b.Font = new Font("Segoe UI", 9F, FontStyle.Regular);
-                    b.Cursor = Cursors.Hand;
-                    // make hover feedback subtle (works at runtime)
-                    b.FlatAppearance.MouseOverBackColor = ControlPaint.Light(sidebar);
-                    b.FlatAppearance.MouseDownBackColor = ControlPaint.Dark(sidebar);
-                }
-            }
-
-            // Header
-            panelHeader.BackColor = header;
-            lblTitle.ForeColor = Color.White;
-            lblTitle.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
-            txtSearch.BackColor = Color.FromArgb(240, 248, 250); // very light to read on white surface
-            txtSearch.ForeColor = lightText;
-            txtSearch.BorderStyle = BorderStyle.FixedSingle;
-
-            // Desktop surface
-            panelDesktop.BackColor = surface;
-
-            // KPI cards (light theme version)
-            foreach (Control cardPanel in flpKpi.Controls) {
-                if (cardPanel is Panel p) {
-                    p.BackColor = card;
-                    p.BorderStyle = BorderStyle.None;
-                    p.Padding = new Padding(12);
-                    foreach (Control c in p.Controls) {
-                        if (c is Label lab) {
-                            if (lab.Font.Size <= 9.5f) {
-                                lab.ForeColor = mutedText; // title
-                                lab.Font = new Font("Segoe UI", 9F, FontStyle.Regular);
-                            } else {
-                                lab.ForeColor = accent; // big value accent
-                                lab.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
-                            }
-                        }
-                    }
-                }
-
-            // Metrics panel
-            pnlMetrics.BackColor = card;
-
-            // Recent grid theming (light)
-            dgvRecent.BackgroundColor = card;
-            dgvRecent.ForeColor = lightText;
-            dgvRecent.EnableHeadersVisualStyles = false;
-            dgvRecent.ColumnHeadersDefaultCellStyle.BackColor = Color.WhiteSmoke;
-            dgvRecent.ColumnHeadersDefaultCellStyle.ForeColor = lightText;
-            dgvRecent.RowTemplate.DefaultCellStyle.BackColor = card;
-            dgvRecent.RowTemplate.DefaultCellStyle.ForeColor = lightText;
-            dgvRecent.GridColor = Color.FromArgb(230, 230, 230);
-            dgvRecent.BorderStyle = BorderStyle.None;
-            dgvRecent.DefaultCellStyle.SelectionBackColor = Color.FromArgb(200, 240, 230);
-            dgvRecent.DefaultCellStyle.SelectionForeColor = lightText;
-
-            // KPI explicit label colours
-            lblKpi1Value.ForeColor = accent;
-            lblKpi2Value.ForeColor = accent;
-            lblKpi3Value.ForeColor = accent;
-            lblKpi4Value.ForeColor = accent;
-
-            lblKpi1Title.ForeColor = mutedText;
-            lblKpi2Title.ForeColor = mutedText;
-            lblKpi3Title.ForeColor = mutedText;
-            lblKpi4Title.ForeColor = mutedText;
-
-            // Ensure logo panel looks correct on light sidebar
-            panelLogo.BackColor = ControlPaint.Dark(sidebar);
-            lblBrand.ForeColor = Color.White;
-        }
-
         private void InitializeKpis() {
             // set initial friendly values (replace with real queries)
             lblKpi1Value.Text = "0";
@@ -170,59 +67,124 @@ namespace VehicleRENTAL {
             lblKpi3Value.Text = "$0";
             lblKpi4Value.Text = "0";
         }
-        // Add this method to your dashboard class
-        private void btnDriversLicences_Click(object sender, EventArgs e)
-        {
-            ShowModulePlaceholder("Drivers & Licences", "This module is under construction.");
+
+        // Minimal, safe "chart" placeholder — avoids requiring System.Windows.Forms.DataVisualization
+        private void InitializeChartPlaceholder() {
+            pnlMetrics.Controls.Clear();
+            var lbl = new Label {
+                Text = "Metrics (placeholder)",
+                Dock = DockStyle.Fill,
+                TextAlign = ContentAlignment.MiddleCenter,
+                Font = new Font("Segoe UI", 10F, FontStyle.Regular),
+                ForeColor = Color.DimGray
+            };
+            pnlMetrics.Controls.Add(lbl);
         }
 
-        private void EnsureMenuOrder() {
-            // desired top-to-bottom order (panelLogo must be at the top)
-            var desired = new[] {
-                "panelLogo",
-                "btnDashboard",
-                "btnCar",
-                "btnCustomer",
-                "btnRental",
-                "btnReturn",
-                "btnDriversLicences",
-                "btnUsers"
+        private void InitializeRecentGrid() {
+            recentTable = new DataTable();
+            recentTable.Columns.Add("ReservationID", typeof(string));
+            recentTable.Columns.Add("Customer", typeof(string));
+            recentTable.Columns.Add("Vehicle", typeof(string));
+            recentTable.Columns.Add("From", typeof(DateTime));
+            recentTable.Columns.Add("To", typeof(DateTime));
+            dgvRecent.DataSource = recentTable;
+        }
+
+        private void LoadSampleData() {
+            // sample KPI values — replace with real data binding
+            lblKpi1Value.Text = rng.Next(5, 50).ToString();
+            lblKpi2Value.Text = rng.Next(40, 95).ToString() + "%";
+            lblKpi3Value.Text = "$" + rng.Next(2000, 20000).ToString("N0");
+            lblKpi4Value.Text = rng.Next(0, 10).ToString();
+
+            // update metric placeholder text with simple monthly numbers
+            var monthly = Enumerable.Range(0, 12).Select(i => rng.Next(30, 95)).ToArray();
+            var txt = "Utilization (last 12 months): " + string.Join(", ", monthly.Select(x => x + "%"));
+            pnlMetrics.Controls.Clear();
+            var lbl = new Label {
+                Text = txt,
+                Dock = DockStyle.Fill,
+                TextAlign = ContentAlignment.MiddleCenter,
+                Font = new Font("Segoe UI", 9F, FontStyle.Regular),
+                ForeColor = Color.FromArgb(35, 98, 170)
             };
+            pnlMetrics.Controls.Add(lbl);
 
-            // find controls that exist
-            var found = desired
-                .Select(n => panelMenu.Controls.Find(n, searchAllChildren: false).FirstOrDefault())
-                .Where(c => c != null)
-                .ToList();
-
-            var logout = panelMenu.Controls.Find("btnLogout", searchAllChildren: false).FirstOrDefault();
-
-            panelMenu.SuspendLayout();
-            try {
-                // Remove the controls we will re-insert so we can guarantee order
-                foreach (var c in found) panelMenu.Controls.Remove(c);
-                if (logout != null) panelMenu.Controls.Remove(logout);
-
-                // Insert controls in the desired top-to-bottom order.
-                // For DockStyle.Top stacking we add each control and set Dock = Top.
-                foreach (var ctrl in found) {
-                    ctrl.Dock = DockStyle.Top;
-                    panelMenu.Controls.Add(ctrl);
-                    panelMenu.Controls.SetChildIndex(ctrl, 0);
-                }
-
-                // Finally add logout and keep it docked to bottom
-                if (logout != null) {
-                    logout.Dock = DockStyle.Bottom;
-                    panelMenu.Controls.Add(logout);
-                }
-            } finally {
-                panelMenu.ResumeLayout();
+            recentTable.Rows.Clear();
+            for (int i = 0; i < 8; i++) {
+                recentTable.Rows.Add(
+                    $"R-{rng.Next(1000,9999)}",
+                    $"Customer {rng.Next(1,200)}",
+                    $"Vehicle {rng.Next(100,999)}",
+                    DateTime.Today.AddDays(rng.Next(-5, 3)),
+                    DateTime.Today.AddDays(rng.Next(4, 12))
+                );
             }
         }
 
-        private void panelLogo_Paint(object sender, PaintEventArgs e) {
+        // Simple search/filter implementation across recentTable
+        private void txtSearch_TextChanged(object sender, EventArgs e) {
+            if (recentTable == null) return;
+            var filter = txtSearch.Text.Trim().Replace("'", "''");
+            if (string.IsNullOrEmpty(filter)) {
+                dgvRecent.DataSource = recentTable;
+            } else {
+                var dv = recentTable.DefaultView;
+                dv.RowFilter = $"ReservationID LIKE '%{filter}%' OR Customer LIKE '%{filter}%' OR Vehicle LIKE '%{filter}%'";
+                dgvRecent.DataSource = dv;
+            }
+        }
+
+        // Navigation button handlers — show different pages in the main area.
+        private void btnCar_Click(object sender, EventArgs e) {
+            lblTitle.Text = "VEHICLES";
+            LoadSampleData();
+            // TODO: open Vehicle Management user control or form inside panelDesktop
+        }
+
+        private void btnCustomer_Click(object sender, EventArgs e) {
+            lblTitle.Text = "CUSTOMERS";
+            LoadSampleData();
+            // TODO: open Customer Profile management UI
+        }
+
+        private void btnRental_Click(object sender, EventArgs e) {
+            lblTitle.Text = "RESERVATIONS";
+            LoadSampleData();
+            // TODO: open Reservation wizard
+        }
+
+        private void btnReturn_Click(object sender, EventArgs e) {
+            lblTitle.Text = "RETURNS";
+            LoadSampleData();
+            // TODO: open Return interface
+        }
+
+        private void btnUsers_Click(object sender, EventArgs e) {
+            lblTitle.Text = "USERS";
+            LoadSampleData();
+            // TODO: open user management
+        }
+
+        private void btnVehicleAdd_Click(object sender, EventArgs e)
+        {
+			AddVehicleForm form = new AddVehicleForm();
+
+			if (form.ShowDialog() == DialogResult.OK)
+			{
+				dgvVehicles.DataSource = null;
+				dgvVehicles.DataSource = VehicleManager.Instance.Vehicles;
+			}
+		}
+
+        private void dgvVehicles_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
 
         }
+
+     
+
+
     }
 }

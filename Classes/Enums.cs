@@ -1,43 +1,56 @@
-﻿namespace VehicleRENTAL.Classes {
-    public enum Status {
-        Available,
-        Rented,
-        UnderMaintenance,
-        OutOfService
-    }
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-    public enum AdminLevel {
-        Low,
-        Medium,
-        High
-    }
+namespace VehicleRENTAL.Classes
+{
+	public enum Status
+	{
+		Available,
+		Rented,
+		UnderMaintenance,
+		OutOfService
+	}
 
-    public enum DamageSeverity {
-        Critical,
-        Moderate,
-        Light
-    }
+	public enum AdminLevel
+	{
+		Low,
+		Medium,
+		High
+	}
 
-    public enum PaymentMethod {
-        Cash,
-        Card,
-        Online,
-        BankTransfer
-    }
+	public enum DamageSeverity
+	{
+		Critical,
+		Moderate,
+		Light
+	}
+
+	public enum PaymentMethod
+	{
+		Cash,
+		Card,
+		Online,
+		BankTransfer
+	}
 
 
-    public enum RentalStatus {
-        Pending,
-        Active,
-        Completed,
-        Cancelled,
-        Overdue
-    }
+	public enum RentalStatus
+	{
+		Pending,
+		Active,
+		Completed,
+		Cancelled,
+		Overdue
+	}
 
-    public enum Report {
-        Fleet,
-        Rental
-    }
+	public enum Report
+	{
+		Fleet,
+		Rental
+	}
 
 	public enum ReservationStatus
 	{
@@ -49,10 +62,11 @@
 		Cancelled //ignored if returned or cancelled
 	}
 
-    public enum UserRole {
-        Admin,
-        RentalAgent
-    }
+	public enum UserRole
+	{
+		Admin,
+		RentalAgent
+	}
 
 	public enum VehicleCategory
 	{

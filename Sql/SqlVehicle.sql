@@ -1,0 +1,2 @@
+ALTER TABLE vehicletbl
+DROP COLUMN Id;
