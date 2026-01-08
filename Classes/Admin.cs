@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+
 
 namespace VehicleRENTAL.Classes
 {
@@ -23,8 +20,18 @@ namespace VehicleRENTAL.Classes
             Permissions.Add("DamageApproval");
         }
 
-        public void ManageUsers()
+namespace VehicleRENTAL.Classes {
+    
+    public class Admin : User {
+        public int adminId;
+        private AdminLevel adminlvl;
+        private List<string> permissions;
+
+
+        // Add a constructor that calls the base User constructor with username and password
+        public Admin(string username, string password) : base(username, password)
         {
+
             CustomerManager cm = new CustomerManager();
             cm.LoadCustomers();   // or whatever method you already have
         }
@@ -34,14 +41,27 @@ namespace VehicleRENTAL.Classes
             ReportManager rm = new ReportManager();
             ReportModel report = rm.GenerateAllReports();
 
+            // Initialize other fields if needed
+            permissions = new List<string>();
+        }
+
+        public void ManageUsers() {
+        }
+
+        // Admin action
+        public void ManageSystem() {
+        // Admin can manage users, vehicles, and reports
+        }
+
+        public void GenerateReports() {
+
+
             rm.PrintReport(report);
         }
-        public void ConfigureUi() 
-        {
+        public void ConfigureUi() {
 
         }
-        public void DamageClaims() 
-        { 
+        public void DamageClaims() {
 
         }
     }

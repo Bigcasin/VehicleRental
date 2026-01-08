@@ -1,25 +1,16 @@
-﻿using System;
-using System.CodeDom;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
-namespace VehicleRENTAL
-{
-    public enum Types 
-    {
+namespace VehicleRENTAL {
+    public enum Types {
         SUV,
         Sedan,
         Hatchack,
         Pickups
     }
-    public class Cars
+    public class Cars {
+        public List<Types> CarTypes() {
+        return new List<Types>
     {
-        public List<Types> CarTypes()
-        {
-            return new List<Types>
-        {
             Types.SUV,
             Types.Sedan,
             Types.Hatchack,
