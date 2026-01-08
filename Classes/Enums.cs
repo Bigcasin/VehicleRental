@@ -94,7 +94,113 @@
 		Paid
 	}
 
+	public enum UserType
+	{
+		Admin,
+		Customer,
+		Agent
+	}
 
+	public enum InvoiceStatus
+	{
+		Pending,
+		Approved,
+		Rejected,
+		Paid
+	}
 
+	public enum NotificationType
+	{
+		ReservationConfirmation,
+		ReservationCancellation,
+		InvoiceGeneration
+	}
 
+	public enum ReportType
+	{
+		FleetUsage,
+		Revenue,
+		CustomerFeedback
+	}
+
+	public enum FeedbackRating
+	{
+		OneStar,
+		TwoStars,
+		ThreeStars,
+		FourStars,
+		FiveStars
+	}
+
+	public enum PaymentGateway
+	{
+		PayPal,
+		Stripe,
+		Square,
+		BankTransfer
+	}
+
+	public enum Currency
+	{
+		USD,
+		EUR,
+		GBP,
+		PHP
+	}
+
+	public enum DiscountType
+	{
+		Percentage,
+		FlatRate
+	}
+
+	public enum TaxType
+	{
+		None,
+		SalesTax,
+		VAT
+	}
+
+	public enum UserStatus
+	{
+		Active,
+		Inactive,
+		Suspended
+	}
+
+	public enum VehicleImageType
+	{
+		Exterior,
+		Interior,
+		LicensePlate
+	}
+
+	public enum DocumentType
+	{
+		DrivingLicense,
+		Passport,
+		IDCard
+	}
+
+	public enum NotificationStatus
+	{
+		Unread,
+		Read,
+		Archived
+	}
+
+	public enum SessionStatus
+	{
+		Active,
+		Expired,
+		Terminated
+	}
+
+	public enum TransactionStatus
+	{
+		Successful,
+		Failed,
+		Pending,
+		 refunded
+	}
 }

@@ -74,6 +74,7 @@ namespace VehicleRENTAL {
             }
         }
 
+        // Single designer hook implementation (remove duplicates to avoid CS0121)
         private void panelMain_Paint(object sender, PaintEventArgs e) {
             // intentionally left blank (designer hook)
         }

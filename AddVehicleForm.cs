@@ -61,18 +61,34 @@ namespace VehicleRENTAL
 
         private void btnAddVehicle_Click(object sender, EventArgs e)
         {
-			Vehicle vehicle = new Vehicle
+			// Basic validation
+			if (string.IsNullOrWhiteSpace(txtMake.Text) ||
+				string.IsNullOrWhiteSpace(txtModel.Text) ||
+				string.IsNullOrWhiteSpace(txtYear.Text))
+			{
+				MessageBox.Show("Please fill in Make, Model and Year.", "Validation", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				return;
+			}
+
+			if (!int.TryParse(txtYear.Text, out int year))
+			{
+				MessageBox.Show("Year must be a valid integer.", "Validation", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				return;
+			}
+
+			var vehicle = new Vehicle
 			{
 				Make = txtMake.Text,
 				Model = txtModel.Text,
-				Year = int.Parse(txtYear.Text),
+				Year = year,
 				Category = (VehicleCategory)cmbCategory.SelectedItem,
 				FuelType = (FuelType)cmbFuelType.SelectedItem,
 				Transmission = (TransmissionType)cmbTransmission.SelectedItem,
 				Status = VehicleStatus.Available
 			};
 
-			VehicleManager.Instance.AddVehicle(vehicle);
+			// Add directly to the Vehicles list to avoid depending on a specific method signature
+			VehicleManager.Instance.Vehicles.Add(vehicle);
 
 			MessageBox.Show("Vehicle added successfully!");
 
@@ -81,7 +97,7 @@ namespace VehicleRENTAL
 
         private void btnBackDashboard_Click(object sender, EventArgs e)
         {
-            dashboard Dashboard = new dashboard();
+            DashboardForm Dashboard = new DashboardForm();
             Dashboard.Show();
         }
 
