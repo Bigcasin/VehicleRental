@@ -7,10 +7,16 @@ using System.Drawing;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using System.ComponentModel;
 using VehicleRENTAL;
+using VehicleRENTAL.Classes;
+using VehicleRENTAL.Services;
 
 namespace VehicleRENTAL {
     public partial class DashboardForm : MaterialForm {
+        private readonly IVehicleManager vehicleManager;
+        private readonly IThemeService themeService;
+
         private Random rng = new Random();
         private DataTable recentTable;
 
@@ -19,20 +25,26 @@ namespace VehicleRENTAL {
         private static extern IntPtr SendMessage(IntPtr hWnd, uint Msg, IntPtr wParam, string lParam);
         private const uint EM_SETCUEBANNER = 0x1501;
 
-        public DashboardForm() {
+        // Designer requires parameterless ctor. It delegates to the main ctor with default adapters.
+        public DashboardForm() : this(new VehicleManagerAdapter(), new ThemeService()) {
+        }
+
+        // Runtime ctor where dependencies can be injected for tests or future DI container
+        public DashboardForm(IVehicleManager vehicleManager, IThemeService themeService) {
+            this.vehicleManager = vehicleManager ?? new VehicleManagerAdapter();
+            this.themeService = themeService ?? new ThemeService();
+
             InitializeComponent();
 
-            // Apply MaterialSkin theme + color scheme (guard in case MaterialSkin not initialized)
-            try {
-                var materialSkinManager = MaterialSkinManager.Instance;
-                materialSkinManager.AddFormToManage(this);
-                materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
-                materialSkinManager.ColorScheme = new ColorScheme(
-                    Primary.BlueGrey800, Primary.BlueGrey900,
-                    Primary.BlueGrey500, Accent.Teal200, TextShade.WHITE
-                );
-            } catch {
-                // non-fatal: allow the form to load even if theme initialization fails
+            // apply theme using injected service (single responsibility)
+            // avoid running theme code inside the WinForms designer
+            if (LicenseManager.UsageMode != LicenseUsageMode.Designtime)
+            {
+                try {
+                    this.themeService.ApplyTheme(this);
+                } catch {
+                    // non-fatal
+                }
             }
         }
 
@@ -77,9 +89,10 @@ namespace VehicleRENTAL {
             // If the VehicleManager type is available, bind its list; otherwise keep safe defaults.
             try {
                 dgvVehicles.AutoGenerateColumns = true;
-                var vm = Classes.VehicleManager.Instance;
-                if (vm != null)
-                    dgvVehicles.DataSource = vm.Vehicles;
+                if (vehicleManager != null)
+                    dgvVehicles.DataSource = vehicleManager.Vehicles;
+                else
+                    dgvVehicles.DataSource = null;
             } catch {
                 // fallback: clear datasource to avoid crashes during merge-incomplete state
                 dgvVehicles.DataSource = null;
@@ -251,54 +264,52 @@ namespace VehicleRENTAL {
             if (panelMenu == null)
                 return;
 
-            // Simplified and safer reordering: build list of controls we want in the exact visual order,
-            // clear and re-add them. This avoids fragile SetChildIndex logic after merges.
-            var desiredNames = new[] {
-                "panelLogo",
-                "btnDashboard",
-                "btnCar",
-                "btnCustomer",
-                "btnRental",
-                "btnReturn",
+            // Desired visual order for top items (logo should be at the very top)
+            var desiredTopOrder = new[]
+            {
+                "btnUsers",
                 "btnDriversLicences",
-                "btnUsers"
+                "btnReturn",
+                "btnRental",
+                "btnCustomer",
+                "btnCar",
+                "btnDashboard",
+                "panelLogo" // add logo last so it renders at the top
             };
 
-            // Collect available controls (keep the control instances)
-            var controlMap = new Dictionary<string, Control>();
+            // Build a map of current controls for fast lookup
+            var controlMap = new Dictionary<string, Control>(StringComparer.OrdinalIgnoreCase);
             foreach (Control c in panelMenu.Controls) {
                 if (!string.IsNullOrEmpty(c.Name))
                     controlMap[c.Name] = c;
             }
 
-            Control logout = null;
-            controlMap.TryGetValue("btnLogout", out logout);
+            controlMap.TryGetValue("btnLogout", out Control logout);
+            controlMap.TryGetValue("panelLogo", out Control logo);
 
             panelMenu.SuspendLayout();
             try {
-                // Remove all children before re-adding to guarantee order
+                // Clear and re-add controls in an order that yields the desired dock layout:
+                // - Add logout first (DockStyle.Bottom)
+                // - Add top-docked items in reverse visual order so the last added sits at the top.
                 panelMenu.Controls.Clear();
 
-                // Add panelLogo (if present) first
-                if (controlMap.TryGetValue("panelLogo", out var logo)) {
-                    logo.Dock = DockStyle.Top;
-                    panelMenu.Controls.Add(logo);
-                }
-
-                // Add the other top items in order
-                foreach (var name in desiredNames) {
-                    if (name == "panelLogo")
-                        continue; // already handled
-                    if (controlMap.TryGetValue(name, out var ctrl) && ctrl != logo) {
-                        ctrl.Dock = DockStyle.Top;
-                        panelMenu.Controls.Add(ctrl);
-                    }
-                }
-
-                // Add logout last and dock to bottom
                 if (logout != null) {
                     logout.Dock = DockStyle.Bottom;
                     panelMenu.Controls.Add(logout);
+                }
+
+                // Add all top items in the array order (first added will be bottom-most of the top-docked group).
+                // We intentionally add in the sequence where the final Add is the item that should appear at the top.
+                foreach (var name in desiredTopOrder) {
+                    if (controlMap.TryGetValue(name, out Control ctrl)) {
+                        // Defensive: ensure docking set to Top
+                        ctrl.Dock = DockStyle.Top;
+
+                        // Add if not already a child
+                        if (!panelMenu.Controls.Contains(ctrl))
+                            panelMenu.Controls.Add(ctrl);
+                    }
                 }
             } finally {
                 panelMenu.ResumeLayout();
@@ -352,7 +363,13 @@ namespace VehicleRENTAL {
 
         private void btnCar_Click(object sender, EventArgs e) {
             if (lblTitle != null) lblTitle.Text = "FLEET";
-            ShowModulePlaceholder("Fleet", "Fleet module placeholder.");
+
+            try {
+              
+                
+            } catch (Exception ex) {
+                ShowModulePlaceholder("Error", "Unable to open fleet: " + ex.Message);
+            }
         }
 
         private void btnCustomer_Click(object sender, EventArgs e) {
@@ -387,6 +404,46 @@ namespace VehicleRENTAL {
             } catch {
                 // ignore runtime errors in a best-effort handler
             }
+        }
+
+        private void lblBrand_Click(object sender, EventArgs e) {
+
+        }
+
+        private void panelLogo_Paint_1(object sender, PaintEventArgs e) {
+
+        }
+
+        private void ShowModuleInContent(Control view)
+        {
+            if (panelContent == null || view == null)
+                return;
+
+            panelContent.SuspendLayout();
+            try
+            {
+                panelContent.Controls.Clear();
+                view.Dock = DockStyle.Fill;
+                panelContent.Controls.Add(view);
+
+                // Keep the title in sync
+                if (lblTitle != null)
+                {
+                    // If the control exposes a Title property you can use it; fallback to control's Text or Name
+                    var title = (view is IHaveTitle t) ? t.Title : (!string.IsNullOrEmpty(view.Text) ? view.Text : view.Name);
+                    lblTitle.Text = string.IsNullOrEmpty(title) ? "MODULE" : title;
+                }
+            }
+            finally
+            {
+                panelContent.ResumeLayout();
+            }
+        }
+
+        // Optional small interface you can add in a shared file to let views expose a title
+        public interface IHaveTitle
+        {
+            string Title { get; }
         }
     }
 }

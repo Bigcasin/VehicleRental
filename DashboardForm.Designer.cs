@@ -24,7 +24,7 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelMenu = new System.Windows.Forms.Panel();
             this.panelLogo = new System.Windows.Forms.Panel();
             this.lblBrand = new System.Windows.Forms.Label();
@@ -56,8 +56,8 @@
             this.panelContent = new System.Windows.Forms.Panel();
             this.splitContainerMain = new System.Windows.Forms.SplitContainer();
             this.pnlMetrics = new System.Windows.Forms.Panel();
-            this.dgvVehicles = new System.Windows.Forms.DataGridView();
             this.dgvRecent = new System.Windows.Forms.DataGridView();
+            this.dgvVehicles = new System.Windows.Forms.DataGridView();
             this.panelMenu.SuspendLayout();
             this.panelLogo.SuspendLayout();
             this.panelHeader.SuspendLayout();
@@ -72,14 +72,13 @@
             this.splitContainerMain.Panel1.SuspendLayout();
             this.splitContainerMain.Panel2.SuspendLayout();
             this.splitContainerMain.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvVehicles)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRecent)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvVehicles)).BeginInit();
             this.SuspendLayout();
             // 
             // panelMenu
             // 
-            // Use the logo first, then the primary nav buttons, keep logout at bottom
-            this.panelMenu.BackColor = System.Drawing.Color.LightSteelBlue; // match Login
+            this.panelMenu.BackColor = System.Drawing.Color.LightSteelBlue;
             this.panelMenu.Controls.Add(this.panelLogo);
             this.panelMenu.Controls.Add(this.btnDashboard);
             this.panelMenu.Controls.Add(this.btnCar);
@@ -100,10 +99,11 @@
             this.panelLogo.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.panelLogo.Controls.Add(this.lblBrand);
             this.panelLogo.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelLogo.Location = new System.Drawing.Point(0, 0);
+            this.panelLogo.Location = new System.Drawing.Point(0, 336);
             this.panelLogo.Name = "panelLogo";
             this.panelLogo.Size = new System.Drawing.Size(220, 72);
             this.panelLogo.TabIndex = 5;
+            this.panelLogo.Paint += new System.Windows.Forms.PaintEventHandler(this.panelLogo_Paint_1);
             // 
             // lblBrand
             // 
@@ -115,6 +115,7 @@
             this.lblBrand.Size = new System.Drawing.Size(165, 20);
             this.lblBrand.TabIndex = 0;
             this.lblBrand.Text = "VEHICLE RENTAL HUB";
+            this.lblBrand.Click += new System.EventHandler(this.lblBrand_Click);
             // 
             // btnDashboard
             // 
@@ -125,7 +126,7 @@
             this.btnDashboard.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDashboard.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.btnDashboard.ForeColor = System.Drawing.Color.Black;
-            this.btnDashboard.Location = new System.Drawing.Point(0, 72);
+            this.btnDashboard.Location = new System.Drawing.Point(0, 288);
             this.btnDashboard.Name = "btnDashboard";
             this.btnDashboard.Padding = new System.Windows.Forms.Padding(18, 0, 0, 0);
             this.btnDashboard.Size = new System.Drawing.Size(220, 48);
@@ -144,7 +145,7 @@
             this.btnCar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCar.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.btnCar.ForeColor = System.Drawing.Color.Black;
-            this.btnCar.Location = new System.Drawing.Point(0, 120);
+            this.btnCar.Location = new System.Drawing.Point(0, 240);
             this.btnCar.Name = "btnCar";
             this.btnCar.Padding = new System.Windows.Forms.Padding(18, 0, 0, 0);
             this.btnCar.Size = new System.Drawing.Size(220, 48);
@@ -163,7 +164,7 @@
             this.btnCustomer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCustomer.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.btnCustomer.ForeColor = System.Drawing.Color.Black;
-            this.btnCustomer.Location = new System.Drawing.Point(0, 168);
+            this.btnCustomer.Location = new System.Drawing.Point(0, 192);
             this.btnCustomer.Name = "btnCustomer";
             this.btnCustomer.Padding = new System.Windows.Forms.Padding(18, 0, 0, 0);
             this.btnCustomer.Size = new System.Drawing.Size(220, 48);
@@ -182,7 +183,7 @@
             this.btnRental.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRental.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.btnRental.ForeColor = System.Drawing.Color.Black;
-            this.btnRental.Location = new System.Drawing.Point(0, 216);
+            this.btnRental.Location = new System.Drawing.Point(0, 144);
             this.btnRental.Name = "btnRental";
             this.btnRental.Padding = new System.Windows.Forms.Padding(18, 0, 0, 0);
             this.btnRental.Size = new System.Drawing.Size(220, 48);
@@ -201,7 +202,7 @@
             this.btnReturn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnReturn.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.btnReturn.ForeColor = System.Drawing.Color.Black;
-            this.btnReturn.Location = new System.Drawing.Point(0, 264);
+            this.btnReturn.Location = new System.Drawing.Point(0, 96);
             this.btnReturn.Name = "btnReturn";
             this.btnReturn.Padding = new System.Windows.Forms.Padding(18, 0, 0, 0);
             this.btnReturn.Size = new System.Drawing.Size(220, 48);
@@ -220,7 +221,7 @@
             this.btnDriversLicences.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDriversLicences.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.btnDriversLicences.ForeColor = System.Drawing.Color.Black;
-            this.btnDriversLicences.Location = new System.Drawing.Point(0, 312);
+            this.btnDriversLicences.Location = new System.Drawing.Point(0, 48);
             this.btnDriversLicences.Name = "btnDriversLicences";
             this.btnDriversLicences.Padding = new System.Windows.Forms.Padding(18, 0, 0, 0);
             this.btnDriversLicences.Size = new System.Drawing.Size(220, 48);
@@ -239,7 +240,7 @@
             this.btnUsers.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUsers.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.btnUsers.ForeColor = System.Drawing.Color.Black;
-            this.btnUsers.Location = new System.Drawing.Point(0, 360);
+            this.btnUsers.Location = new System.Drawing.Point(0, 0);
             this.btnUsers.Name = "btnUsers";
             this.btnUsers.Padding = new System.Windows.Forms.Padding(18, 0, 0, 0);
             this.btnUsers.Size = new System.Drawing.Size(220, 48);
@@ -462,10 +463,10 @@
             this.panelContent.BackColor = System.Drawing.Color.Transparent;
             this.panelContent.Controls.Add(this.splitContainerMain);
             this.panelContent.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelContent.Location = new System.Drawing.Point(12, 132);
+            this.panelContent.Location = new System.Drawing.Point(12, 12);
             this.panelContent.Name = "panelContent";
             this.panelContent.Padding = new System.Windows.Forms.Padding(6);
-            this.panelContent.Size = new System.Drawing.Size(956, 304);
+            this.panelContent.Size = new System.Drawing.Size(956, 424);
             this.panelContent.TabIndex = 2;
             // 
             // splitContainerMain
@@ -482,7 +483,7 @@
             // 
             this.splitContainerMain.Panel2.Controls.Add(this.dgvRecent);
             this.splitContainerMain.Panel2.Controls.Add(this.dgvVehicles);
-            this.splitContainerMain.Size = new System.Drawing.Size(944, 292);
+            this.splitContainerMain.Size = new System.Drawing.Size(944, 412);
             this.splitContainerMain.SplitterDistance = 660;
             this.splitContainerMain.TabIndex = 2;
             // 
@@ -492,23 +493,8 @@
             this.pnlMetrics.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlMetrics.Location = new System.Drawing.Point(0, 0);
             this.pnlMetrics.Name = "pnlMetrics";
-            this.pnlMetrics.Size = new System.Drawing.Size(660, 292);
+            this.pnlMetrics.Size = new System.Drawing.Size(660, 412);
             this.pnlMetrics.TabIndex = 0;
-            // 
-            // dgvVehicles
-            // 
-            this.dgvVehicles.AllowUserToAddRows = false;
-            this.dgvVehicles.AllowUserToDeleteRows = false;
-            this.dgvVehicles.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvVehicles.BackgroundColor = System.Drawing.Color.WhiteSmoke;
-            this.dgvVehicles.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgvVehicles.Dock = System.Windows.Forms.DockStyle.Top;
-            this.dgvVehicles.Height = 160;
-            this.dgvVehicles.Location = new System.Drawing.Point(0, 0);
-            this.dgvVehicles.Name = "dgvVehicles";
-            this.dgvVehicles.ReadOnly = true;
-            this.dgvVehicles.RowHeadersVisible = false;
-            this.dgvVehicles.TabIndex = 1;
             // 
             // dgvRecent
             // 
@@ -522,22 +508,37 @@
             this.dgvRecent.Name = "dgvRecent";
             this.dgvRecent.ReadOnly = true;
             this.dgvRecent.RowHeadersVisible = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(210)))), ((int)(((byte)(190)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
-            this.dgvRecent.RowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgvRecent.Size = new System.Drawing.Size(280, 132);
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(210)))), ((int)(((byte)(190)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
+            this.dgvRecent.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvRecent.Size = new System.Drawing.Size(280, 252);
             this.dgvRecent.TabIndex = 0;
             // 
-            // dashboard
+            // dgvVehicles
+            // 
+            this.dgvVehicles.AllowUserToAddRows = false;
+            this.dgvVehicles.AllowUserToDeleteRows = false;
+            this.dgvVehicles.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvVehicles.BackgroundColor = System.Drawing.Color.WhiteSmoke;
+            this.dgvVehicles.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvVehicles.Dock = System.Windows.Forms.DockStyle.Top;
+            this.dgvVehicles.Location = new System.Drawing.Point(0, 0);
+            this.dgvVehicles.Name = "dgvVehicles";
+            this.dgvVehicles.ReadOnly = true;
+            this.dgvVehicles.RowHeadersVisible = false;
+            this.dgvVehicles.Size = new System.Drawing.Size(280, 160);
+            this.dgvVehicles.TabIndex = 1;
+            // 
+            // DashboardForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(1200, 520);
             this.Controls.Add(this.panelDesktop);
             this.Controls.Add(this.panelHeader);
             this.Controls.Add(this.panelMenu);
-            this.Name = "dashboard";
+            this.Name = "DashboardForm";
             this.Text = "dashboard";
             this.Load += new System.EventHandler(this.dashboard_Load);
             this.panelMenu.ResumeLayout(false);
@@ -557,8 +558,8 @@
             this.splitContainerMain.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).EndInit();
             this.splitContainerMain.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvVehicles)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRecent)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvVehicles)).EndInit();
             this.ResumeLayout(false);
 
         }
