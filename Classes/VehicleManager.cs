@@ -1,29 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace VehicleRENTAL.Classes
 {
+	public class VehicleManager
+	{
+		private static VehicleManager _instance;
 
-    public class VehicleManager
-    {
-        public void AddVehicle(Vehicle vehicle) 
-        {
-            
-        }
-        public void EditVehicle(Vehicle vehicle) 
-        {
-            
-        }
-        public void UpdateStatus(int vehicleid, VehicleStatus status) 
-        {
-            
-        }
-        public List<Vehicle> Search(SearchFilter criteria) 
-        {
-            return new List<Vehicle>();
-        }
-    }
+		public static VehicleManager Instance
+		{
+			get
+			{
+				if (_instance == null)
+					_instance = new VehicleManager();
+				return _instance;
+			}
+		}
+
+		public List<Vehicle> Vehicles { get; } = new List<Vehicle>();
+
+		public void AddVehicle(Vehicle vehicle)
+		{
+			Vehicles.Add(vehicle);
+		}
+	}
+
+
 }

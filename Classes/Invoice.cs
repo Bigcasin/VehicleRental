@@ -1,13 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace VehicleRENTAL.Classes
-{
-    public class Invoice
-    {
+namespace VehicleRENTAL.Classes {
+    public class Invoice {
         public int InvoiceID { get; set; }
 
         public Rental Rental { get; set; }
