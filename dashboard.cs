@@ -208,7 +208,6 @@ namespace VehicleRENTAL {
                 foreach (var ctrl in found) {
                     ctrl.Dock = DockStyle.Top;
                     panelMenu.Controls.Add(ctrl);
-                    panelMenu.Controls.SetChildIndex(ctrl, 0);
                 }
 
                 // Finally add logout and keep it docked to bottom
