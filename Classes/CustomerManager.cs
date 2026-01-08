@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace VehicleRENTAL.Classes
 {
@@ -101,6 +102,10 @@ namespace VehicleRENTAL.Classes
         public List<Customer> GetAllCustomers()
         {
             return customers.ToList();
+        }
+        public void LoadCustomers()
+        {
+            MessageBox.Show("Customer management loaded.");
         }
     }
 }

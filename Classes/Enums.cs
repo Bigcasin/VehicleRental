@@ -34,9 +34,26 @@
         Overdue
     }
 
+
+	public enum RentalStatus
+	{
+		Pending,
+		Active,
+		Completed,
+		Cancelled,
+		Overdue
+	}
+
+	public enum ReportType
+    {
+		Fleet,
+		Rental,
+        Damage
+
     public enum Report {
         Fleet,
         Rental
+
     }
 
 	public enum ReservationStatus
