@@ -116,8 +116,12 @@
     <Compile Include="AddVehicleForm.Designer.cs">
       <DependentUpon>AddVehicleForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Classes\DamageReportManager.cs" />
     <Compile Include="Classes\Database.cs" />
     <Compile Include="Classes\IVehicleManager.cs" />
+    <Compile Include="Classes\PaymentManager.cs" />
+    <Compile Include="Classes\RateManager.cs" />
+    <Compile Include="Classes\UserManager.cs" />
     <Compile Include="Classes\VehicleManagerAdapter.cs" />
     <Compile Include="Models\Cars.cs" />
     <Compile Include="Classes\Admin.cs" />

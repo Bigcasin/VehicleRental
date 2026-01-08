@@ -8,48 +8,71 @@ namespace VehicleRENTAL.Classes
     {
         public int AdminId { get; set; }
         public AdminLevel AdminLevel { get; set; }
-        public List<string> Permissions { get; set; } = new List<string>();
-        public Admin()
+        public List<string> Permissions { get; private set; }
+        public Admin(string username, string password) : base(username, password)
         {
             Role = UserRole.Admin;
 
-            Permissions.Add("UserManagement");
-            Permissions.Add("FleetManagement");
-            Permissions.Add("RateManagement");
-            Permissions.Add("Reports");
-            Permissions.Add("DamageApproval");
+            Permissions = new List<string> 
+            {
+            "UserManagement",
+            "FleetManagement",
+            "RateManagement",
+            "Reports",
+            "DamageApproval"
+            };
         }
-        public Admin(string username, string password) : base(username, password)
-        {
 
-            CustomerManager cm = new CustomerManager();
-            cm.LoadCustomers();   // or whatever method you already have
-        }
         public void GenerateReports()
         {
             ReportManager rm = new ReportManager();
             ReportModel report = rm.GenerateAllReports();
-
-            // Initialize other fields if needed
-            permissions = new List<string>();
             rm.PrintReport(report);
         }
+
         public void ManageUsers()
         {
+            UserManager um = new UserManager();
         }
 
         // Admin action
         public void ManageSystem()
         {
-            // Admin can manage users, vehicles, and reports
+            ManageUsers();
+            ManageFleet();
+            GenerateReports();
+            DamageClaims();
         }
+
         public void ConfigureUi()
         {
 
         }
+
         public void DamageClaims()
         {
+            DamageReportManager drm = new DamageReportManager();
+            var pending = drm.LoadPendingReports();
+        }
 
+        public void ManageFleet()
+        {
+            VehicleManager vm = new VehicleManager();
+            vm.LoadVehicles();
+        }
+
+        public bool HasPermission(string permission)
+        {
+            return Permissions.Contains(permission);
+        }
+        public void ManageRates()
+        {
+            RateManager rm = new RateManager();
+        }
+
+        public void ApproveDamageClaims()
+        {
+            DamageReportManager dm = new DamageReportManager();
         }
     }
 }

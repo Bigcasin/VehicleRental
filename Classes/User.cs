@@ -34,10 +34,7 @@ namespace VehicleRENTAL.Classes
 		}
 
 	
-		public void Logout()
-		{
-			
-		}
+		public void Logout() { }
 
 	
 		public void UpdateProfile(string firstname, string lastname, int phoneNum)

@@ -34,26 +34,17 @@
         Overdue
     }
 
-
-	public enum RentalStatus
-	{
-		Pending,
-		Active,
-		Completed,
-		Cancelled,
-		Overdue
-	}
-
 	public enum ReportType
-    {
+	{
 		Fleet,
 		Rental,
-        Damage
-
+		Damage,
+        Customer,
+        Payment
+    }
     public enum Report {
         Fleet,
         Rental
-
     }
 
 	public enum ReservationStatus
@@ -131,13 +122,6 @@
 		ReservationConfirmation,
 		ReservationCancellation,
 		InvoiceGeneration
-	}
-
-	public enum ReportType
-	{
-		FleetUsage,
-		Revenue,
-		CustomerFeedback
 	}
 
 	public enum FeedbackRating

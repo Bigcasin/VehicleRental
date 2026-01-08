@@ -86,11 +86,5 @@ public class ReportManager
 	{
 		// future implementation
 	}
-
-	public DataSet CompileData()
-	{
-		return new DataSet();
-	}
-
 }
 
