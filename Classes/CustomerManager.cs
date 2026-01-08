@@ -36,8 +36,9 @@ namespace VehicleRENTAL.Classes
         { 
             return true;
         }
-        public bool ValidateCustomerData(Customer customer) {
-        return true;
+        public bool ValidateCustomerData(Customer customer) 
+        {
+            return true;
         }
     }
 }

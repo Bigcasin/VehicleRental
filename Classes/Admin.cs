@@ -1,16 +1,19 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace VehicleRENTAL.Classes
 {
-   
-    public class Admin : User
-    {
-        public int adminId;
-        private AdminLevel adminlvl;
-        private List<string> permissions;
-
-        public void ManageUsers()
-        {
+	public class Admin : User
+	{
+		
+		public Admin(string username, string password)
+			: base(username, password) // send username & password to User
+		{
+			Role = UserRole.Admin;
+		}
 
 		// Admin action
 		public void ManageSystem()
@@ -18,16 +21,13 @@ namespace VehicleRENTAL.Classes
 			// Admin can manage users, vehicles, and reports
 		}
 
-        public void GenerateReports() 
-        {
-
-        }
-        public void ConfigureUi() 
-        {
-
-        }
-        public void DamageClaims() 
-        { 
+		public void ApproveDamageReport(DamageReport report)
+		{
+			if (report != null)
+			{
+				report.ApprovedByAdmin = true;
+			}
+		}
 
 	}
 }
