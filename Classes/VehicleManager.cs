@@ -22,7 +22,9 @@ namespace VehicleRENTAL.Classes
 		{
 			Vehicles.Add(vehicle);
 		}
-	}
-
-
+        public void LoadVehicles()
+        {
+            // later: connect to SQL
+        }
+    }
 }

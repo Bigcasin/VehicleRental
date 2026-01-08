@@ -7,84 +7,58 @@ using VehicleRENTAL.Classes;
 
 public class ReportManager
 {
-
-   
-    public class ReportManager 
+    public ReportModel GenerateAllReports()
     {
-        public ReportType GenerateFleetReport { get; set; }
-        public ReportType GenerateRentalReport { get; set; }
-        public ReportModel GenerateAllReports()
-        {
-            // Compile data
-            DataSet data = CompileData();
+        // Compile data
+        DataSet data = CompileData();
 
-            // Build report object
-            ReportModel report = new ReportModel();
-            report.Data = data;
-            report.Title = "System Reports";
+        // Build report object
+        ReportModel report = new ReportModel();
+        report.Data = data;
+        report.Title = "System Reports";
 
-            return report;
-        }
-        public void PrintReport(ReportModel report)
-        {
-            // printing logic here
-        }
-        public void ExportPDF(ReportType report, string path) 
-        {
-            
-        }
-        public void ExportCSV(ReportType report, string path)
-        {
+        return report;
+    }
+    public void PrintReport(ReportModel report)
+    {
+        // printing logic here
+    }
+    public void ExportPDF(ReportType report, string path)
+    {
 
-        }
-        public void ExportExcel(ReportType report, string path)
-        {
-            
-        }
-        public void PrintReport(ReportType report) 
-        {
-            
-        }
-        public DataSet CompileData() 
-        {
-            return new DataSet();
-        }
+    }
+    public void ExportCSV(ReportType report, string path)
+    {
+
+    }
+    public void ExportExcel(ReportType report, string path)
+    {
+
+    }
+    public void PrintReport(ReportType report)
+    {
+
+    }
+    public DataSet CompileData()
+    {
+        return new DataSet();
+    }
+    public ReportModel GenerateFleetReport()
+    {
+        ReportModel report = new ReportModel();
+        report.Title = "Fleet Report";
+        report.Data = null;
+        return report;
     }
 
-	// Generate fleet report
-	public Report GenerateFleetReport()
-	{
-		Report report = new Report();
-		// later: fill report with vehicle data
-		return report;
-	}
-
-	// Generate rental report
-	public Report GenerateRentalReport()
-	{
-		Report report = new Report();
-		// later: fill report with rental data
-		return report;
-	}
-
-	public void ExportPDF(Report report, string path)
-	{
-		// future implementation
-	}
-
-	public void ExportCSV(Report report, string path)
-	{
-		// future implementation
-	}
-
-	public void ExportExcel(Report report, string path)
-	{
-		// future implementation
-	}
-
-	public void PrintReport(Report report)
-	{
-		// future implementation
-	}
+    // Generate rental report
+    public ReportModel GenerateRentalReport()
+    {
+        ReportModel report = new ReportModel();
+        report.Title = "Rental Report";
+        report.Data = null;
+        return report;
+    }
 }
+
 

@@ -121,6 +121,7 @@
     <Compile Include="Classes\IVehicleManager.cs" />
     <Compile Include="Classes\PaymentManager.cs" />
     <Compile Include="Classes\RateManager.cs" />
+    <Compile Include="Classes\ReportMode.cs" />
     <Compile Include="Classes\UserManager.cs" />
     <Compile Include="Classes\VehicleManagerAdapter.cs" />
     <Compile Include="Models\Cars.cs" />

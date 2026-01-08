@@ -20,9 +20,9 @@ namespace VehicleRENTAL.Classes
             return rates;
         }
 
-        public RateConfiguration GetRateByVehicle(string vehicleType)
+        public RateConfiguration GetRateByVehicle(VehicleCategory category)
         {
-            return rates.FirstOrDefault(r => r.VehicleType == vehicleType);
+            return rates.FirstOrDefault(r => r.Category == category);
         }
     }
 }

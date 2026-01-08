@@ -58,7 +58,7 @@ namespace VehicleRENTAL.Classes
         public void ManageFleet()
         {
             VehicleManager vm = new VehicleManager();
-            vm.LoadVehicles();
+            VehicleManager.Instance.LoadVehicles();
         }
 
         public bool HasPermission(string permission)
