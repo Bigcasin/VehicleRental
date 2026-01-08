@@ -19,7 +19,7 @@ namespace VehicleRENTAL
         {
             // start with empty progress
             MessageBox.Show("Loading screen started");
-
+                                                               
 
             _percent = 0;
             UpdateProgressVisual();

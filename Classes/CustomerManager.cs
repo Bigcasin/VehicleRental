@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace VehicleRENTAL.Classes
 {
@@ -23,6 +24,10 @@ namespace VehicleRENTAL.Classes
         public bool ValidateCustomerData(Customer customer) 
         {
             return true;
+        }
+        public void LoadCustomers()
+        {
+            MessageBox.Show("Customer management loaded.");
         }
     }
 }

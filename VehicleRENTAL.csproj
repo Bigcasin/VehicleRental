@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\Database.cs" />
+    <Compile Include="Classes\ReportModel.cs" />
     <Compile Include="Models\Cars.cs" />
     <Compile Include="Classes\Admin.cs" />
     <Compile Include="Classes\BilingManager.cs" />

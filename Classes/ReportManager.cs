@@ -9,23 +9,39 @@ using System.Threading.Tasks;
 namespace VehicleRENTAL.Classes
 {
    
-    public class ReportManager
+    public class ReportManager 
     {
-        public Report GenerateFleetReport { get; set; }
-        public Report GenerateRentalReport { get; set; }
-        public void ExportPDF(Report report, string path) 
+        public ReportType GenerateFleetReport { get; set; }
+        public ReportType GenerateRentalReport { get; set; }
+        public ReportModel GenerateAllReports()
+        {
+            // Compile data
+            DataSet data = CompileData();
+
+            // Build report object
+            ReportModel report = new ReportModel();
+            report.Data = data;
+            report.Title = "System Reports";
+
+            return report;
+        }
+        public void PrintReport(ReportModel report)
+        {
+            // printing logic here
+        }
+        public void ExportPDF(ReportType report, string path) 
         {
             
         }
-        public void ExportCSV(Report report, string path)
+        public void ExportCSV(ReportType report, string path)
         {
 
         }
-        public void ExportExcel(Report report, string path)
+        public void ExportExcel(ReportType report, string path)
         {
             
         }
-        public void PrintReport(Report report) 
+        public void PrintReport(ReportType report) 
         {
             
         }

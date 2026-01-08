@@ -53,11 +53,12 @@ namespace VehicleRENTAL.Classes
 		Overdue
 	}
 
-	public enum Report
-	{
+	public enum ReportType
+    {
 		Fleet,
-		Rental
-	}
+		Rental,
+        Damage
+    }
 
 	public enum ReservationStatus
 	{
